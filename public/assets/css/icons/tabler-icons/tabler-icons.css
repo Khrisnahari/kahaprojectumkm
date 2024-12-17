@@ -626,6 +626,10 @@
   content: "\ed9f";
 }
 
+.ti-bag:before {
+  content: "\e655";
+}
+
 .ti-arrow-loop-left-2:before {
   content: "\f04c";
 }
