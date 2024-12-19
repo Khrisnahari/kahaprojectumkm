@@ -19,7 +19,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="{{asset('assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -40,14 +40,14 @@
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
-            <li class="sidebar-item {{ Request::is('umkm') ? 'active' : '' }}">
+            <li class="sidebar-item {{ Request::is('umkm*') ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ url('umkm') }}" aria-expanded="false">
                 <span>
                   <i class="ti ti-list"></i>
                 </span>
                 <span class="hide-menu">Data UMKM</span>
               </a>
-            </li>
+            </li>            
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -77,7 +77,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{{asset('assets/images/profile/user-1.jpg')}}" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">

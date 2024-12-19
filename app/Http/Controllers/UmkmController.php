@@ -71,11 +71,9 @@ class UmkmController extends Controller
     {
         //validate form
         $request->validate([
-            'image'         => 'image|mimes:jpeg,jpg,png|max:2048',
-            'title'         => 'required|min:5',
-            'description'   => 'required|min:10',
-            'price'         => 'required|numeric',
-            'stock'         => 'required|numeric'
+            'image'             => 'image|mimes:jpeg,jpg,png|max:2048',
+            'nama_umkm'         => 'required',
+            'alamat'            => 'required'
         ]);
 
         //get product by ID
@@ -119,7 +117,7 @@ class UmkmController extends Controller
         $umkm = Umkm::findOrFail($id);
 
         //delete image
-        // Storage::delete('public/products/'. $product->image);
+        Storage::delete('public/umkm/'. $umkm->image);
 
         //delete product
         $umkm->delete();

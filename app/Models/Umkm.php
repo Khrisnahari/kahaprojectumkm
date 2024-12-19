@@ -16,5 +16,10 @@ class Umkm extends Model
         'status',
         'image'
     ];
+
+    // protected $casts = [
+    //     'image' => 'array', // Mengubah kolom 'images' menjadi array saat diakses
+    // ];
+
     protected $table = 'umkm';
 }
