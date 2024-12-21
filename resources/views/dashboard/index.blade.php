@@ -1,16 +1,42 @@
 @extends('template')
 @section('title', 'Pasar Digital Darmasaba - Dashboard')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    Dashboard
-</body>
-</html>
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-9 fw-semibold">Total UMKM</h5>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <h4 class="fw-semibold">{{ $totalUmkm }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-9 fw-semibold">Total Terverifikasi</h5>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <h4 class="fw-semibold">{{ $totalVerifikasiUmkm }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-9 fw-semibold">Total Belum Verifikasi</h5>
+                    <div class="row align-items-center">
+                        <div class="col-lg-4">
+                            <h4 class="fw-semibold">{{ $totalBelumverifikasiUmkm }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection

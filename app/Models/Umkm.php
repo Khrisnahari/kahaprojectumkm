@@ -13,6 +13,7 @@ class Umkm extends Model
         'nama_umkm',
         'kategori',
         'alamat',
+        'deskripsi_umkm',
         'status',
         'image'
     ];
