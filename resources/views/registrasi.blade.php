@@ -24,8 +24,16 @@
                   <img src="../assets/images/logos/favicon.png" alt="">
                 </a>
                 <h4 style="font-weight: bold" class="text-center">Pasar Digital Darmasaba</h4>
-                <form method="POST" action="{{ route('proses.login') }}">
+                <form method="POST" action="{{ route('proses.registrasi') }}">
                   @csrf
+                  <div class="mt-3">
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email" name="email">
+                      @if ($errors->has('email'))
+                      <span class="text-danger">{{ $errors->first('email') }}</span>
+                      @endif
+                    </div>
                   <div class="mt-3">
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Username</label>
@@ -50,10 +58,10 @@
                       </div>
                       <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
                     </div> --}}
-                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Masuk</button>
+                    <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Daftar</button>
                     <div class="d-flex align-items-center justify-content-center">
-                      <p class="fs-4 mb-0 fw-bold">Daftar Sebagai UMKM?</p>
-                      <a class="text-primary fw-bold ms-2" href="{{route('registrasi')}}">Klik disini</a>
+                      <p class="fs-4 mb-0 fw-bold">Sudah Punya Akun?</p>
+                      <a class="text-primary fw-bold ms-2" href="{{route('login')}}">Klik disini</a>
                     </div>
                   </div>
                 </form>
@@ -66,27 +74,5 @@
   </div>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <script>
-    //message with sweetalert
-    @if (session('success'))
-        Swal.fire({
-            icon: "success",
-            title: "BERHASIL",
-            text: "{{ session('success') }}",
-            showConfirmButton: false,
-            timer: 2000
-        });
-    @elseif (session('error'))
-        Swal.fire({
-            icon: "error",
-            title: "GAGAL!",
-            text: "{{ session('error') }}",
-            showConfirmButton: false,
-            timer: 2000
-        });
-    @endif
-</script>
 </body>
-
 </html>

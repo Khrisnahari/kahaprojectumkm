@@ -17,48 +17,9 @@ class UmkmController extends Controller
         return view('umkm.index', compact('umkms', 'no'));
     }
 
-    public function create(): View
-    {
-        return view('umkm.create');
-    }
-
-    public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'image'             => 'required|image|mimes:jpeg,jpg,png|max:2048',
-            'nama_umkm'         => 'required',
-            'alamat'            => 'required',
-            'deskripsi_umkm'    => 'required'
-        ], [
-            'image.required'        => 'Gambar wajib diunggah.',
-            'image.image'           => 'File harus berupa gambar.',
-            'image.mimes'           => 'Format gambar harus jpeg, jpg, atau png.',
-            'image.max'             => 'Ukuran gambar maksimal 2MB.',
-            'nama_umkm.required'    => 'Nama UMKM tidak boleh kosong.',
-            'alamat.required'       => 'Alamat wajib diisi.',
-            'deskripsi_umkm.required' => 'Tentang UMKM tidak boleh kosong.'
-        ]);
-
-
-        //upload image
-        $image = $request->file('image');
-        $image->store('umkm', 'public');
-
-        Umkm::create([
-            'image'          => $image->hashName(),
-            'nama_umkm'      => $request->nama_umkm,
-            'kategori'       => $request->kategori,
-            'alamat'         => $request->alamat,
-            'deskripsi_umkm' => $request->deskripsi_umkm,
-            'status'         => 'Belum Verifikasi'
-        ]);
-
-        return redirect()->route('umkm.index')->with(['success' => 'Data Berhasil Disimpan!']);
-    }
-
     public function show(string $id): View
     {
-        $umkm = Umkm::findOrFail($id);
+        $umkm = Umkm::with('owner')->findOrFail($id);
         return view('umkm.show', compact('umkm'));
     }
 

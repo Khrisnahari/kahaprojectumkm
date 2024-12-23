@@ -8,11 +8,11 @@
                     <div class="col-lg-10 col-12" style="margin-top:12px">
                         <h5 class="card-title fw-semibold mb-4">Data UMKM</h5>
                     </div>
-                    <div class="col-lg-2 col-12">
+                    {{-- <div class="col-lg-2 col-12">
                         <a href="{{ route('umkm.create') }}"
                             class="btn btn-sm btn-primary p-2 fs-4 mb-4 rounded-2 w-100"><span class="ti ti-plus"></span>
                             UMKM</a>
-                    </div>
+                    </div> --}}
                     <hr>
                 </div>
                 <div class="table-responsive">
@@ -70,9 +70,9 @@
                                             method="POST">
                                             <a href="{{ route('umkm.show', $umkm->id) }}"
                                                 class="btn btn-sm btn-dark">Detail</a>
-                                            <a href="{{ route('umkm.edit', $umkm->id) }}"
+                                            {{-- <a href="{{ route('umkm.edit', $umkm->id) }}"
                                                 style="background-color: rgb(0, 38, 255); color: white"
-                                                class="btn btn-sm">Edit</a>
+                                                class="btn btn-sm">Edit</a> --}}
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-sm bg-status-danger" style="color: white"

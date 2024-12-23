@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'admins', // Pastikan provider "admins" sudah ada
         ],
+        'owner' => [
+            'driver' => 'session',
+            'provider' => 'owners', // Pastikan provider "admins" sudah ada
+        ],
     ],
 
     /*
@@ -71,6 +75,10 @@ return [
         'admins' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
+        ],
+        'owners' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Owner::class,
         ],
 
         // 'users' => [

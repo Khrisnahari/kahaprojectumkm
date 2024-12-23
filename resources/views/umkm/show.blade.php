@@ -38,7 +38,7 @@
                             </div>
                         </div>
                         <div class="mt-4">
-                            <h6 style="font-weight: bold">Alamat</h6>
+                            <h6 style="font-weight: bold">Tentang UMKM</h6>
                             <div class="fs-3 fw-semibold" style="margin-top: 3px">
                                 {{ $umkm->deskripsi_umkm }}
                             </div>
@@ -51,6 +51,18 @@
                                 @else
                                     <span class="badge bg-status-danger rounded-3 fs-3 fw-semibold">Belum Verifikasi</span>
                                 @endif 
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h6 style="font-weight: bold">Owner</h6>
+                            <div class="fs-3 fw-semibold" style="margin-top: 3px">
+                               {{$umkm->owner->namalengkap}}
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h6 style="font-weight: bold">No Handphone</h6>
+                            <div class="fs-3 fw-semibold" style="margin-top: 3px">
+                               {{$umkm->owner->no_telp}}
                             </div>
                         </div>
                         <hr>

@@ -32,6 +32,7 @@
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">Home</span>
             </li>
+            @if (Auth::guard('admin')->check())
             <li class="sidebar-item {{ Request::is('dashboard') ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ url('dashboard') }}" aria-expanded="false">
                 <span>
@@ -40,14 +41,26 @@
                 <span class="hide-menu">Dashboard</span>
               </a>
             </li>
+            @endif
+            @if (Auth::guard('admin')->check())
             <li class="sidebar-item {{ Request::is('umkm*') ? 'active' : '' }}">
-              <a class="sidebar-link" href="{{ url('umkm') }}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-list"></i>
-                </span>
-                <span class="hide-menu">Data UMKM</span>
-              </a>
-            </li>            
+                <a class="sidebar-link" href="{{ url('umkm') }}" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-list"></i>
+                    </span>
+                    <span class="hide-menu">Data UMKM</span>
+                </a>
+            </li>
+          @elseif (Auth::guard('owner')->check())
+            <li class="sidebar-item {{ Request::is('kelolaumkm*') ? 'active' : '' }}">
+                <a class="sidebar-link" href="{{ url('kelolaumkm') }}" aria-expanded="false">
+                    <span>
+                        <i class="ti ti-layout-dashboard"></i>
+                    </span>
+                    <span class="hide-menu">Dashboard</span>
+                </a>
+            </li>
+          @endif            
         </nav>
         <!-- End Sidebar navigation -->
       </div>
@@ -81,18 +94,24 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="{{route('profile.index')}}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">My Profile</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    @if (Auth::guard('owner')->check() && !Auth::guard('owner')->user()->umkm)
+                    <a href="{{route('kelolaumkm.create')}}" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-list-check fs-6"></i>
+                      <p class="mb-0 fs-3">Daftarkan UMKM</p>
+                    </a>
+                    @endif
+                    {{-- <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-mail fs-6"></i>
                       <p class="mb-0 fs-3">My Account</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-list-check fs-6"></i>
                       <p class="mb-0 fs-3">My Task</p>
-                    </a>
+                    </a> --}}
                     <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>

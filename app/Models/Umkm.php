@@ -15,12 +15,18 @@ class Umkm extends Model
         'alamat',
         'deskripsi_umkm',
         'status',
-        'image'
+        'image',
+        'owner_id'
     ];
 
     // protected $casts = [
     //     'image' => 'array', // Mengubah kolom 'images' menjadi array saat diakses
     // ];
+
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class, 'owner_id', 'id');
+    }
 
     protected $table = 'umkm';
 }
