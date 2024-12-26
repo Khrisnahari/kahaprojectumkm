@@ -29,31 +29,22 @@
                   <div class="mt-3">
                     <div class="mb-3">
                       <label for="exampleInputEmail1" class="form-label">Username</label>
-                      <input type="username" class="form-control" id="username" name="username">
+                      <input type="username" class="form-control" id="username" name="username" placeholder="Masukkan Username">
                       @if ($errors->has('username'))
                       <span class="text-danger">{{ $errors->first('username') }}</span>
                       @endif
                     </div>
                     <div class="mb-4">
                       <label for="exampleInputPassword1" class="form-label">Password</label>
-                      <input type="password" class="form-control" id="password" name="password">
+                      <input type="password" class="form-control" id="password" name="password" placeholder="Masukkan Password">
                       @if ($errors->has('password'))
                       <span class="text-danger">{{ $errors->first('password') }}</span>
                       @endif
                     </div>
-                    {{-- <div class="d-flex align-items-center justify-content-between mb-4">
-                      <div class="form-check">
-                        <input class="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked>
-                        <label class="form-check-label text-dark" for="flexCheckChecked">
-                          Remeber this Device
-                        </label>
-                      </div>
-                      <a class="text-primary fw-bold" href="./index.html">Forgot Password ?</a>
-                    </div> --}}
                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Masuk</button>
                     <div class="d-flex align-items-center justify-content-center">
                       <p class="fs-4 mb-0 fw-bold">Daftar Sebagai UMKM?</p>
-                      <a class="text-primary fw-bold ms-2" href="{{route('registrasi')}}">Klik disini</a>
+                      <a class="text-primary fw-bold ms-2" href="{{route('registrasi')}}">Daftar</a>
                     </div>
                   </div>
                 </form>

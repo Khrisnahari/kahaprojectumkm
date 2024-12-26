@@ -19,7 +19,6 @@ class DashboardController extends Controller
         // Mengambil jumlah UMKM yang belum diverifikasi
         $totalBelumverifikasiUmkm = Umkm::where('status', '!=', 'Verifikasi')->count();
 
-        // Kirim data ke tampilan (view)
         return view('dashboard.index', compact('totalUmkm', 'totalVerifikasiUmkm', 'totalBelumverifikasiUmkm'));
     }
 }

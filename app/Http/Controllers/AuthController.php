@@ -45,9 +45,17 @@ class AuthController extends Controller
     public function prosesRegistrasi(Request $request)
     {
         $request->validate([
+            'namalengkap'     => 'required',
             'email'   => 'required|email',
             'username'     => 'required|min:5',
+            'no_telp'     => 'required',
             'password'   => 'required|min:5',
+        ], [
+            'namalengkap.required'        => 'Nama Lengkap tidak boleh kosong',
+            'email.required'    => 'Email tidak boleh kosong',
+            'username.required'       => 'Username tidak boleh kosong',
+            'telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
         ]);
 
         $owner = new Owner([
@@ -68,7 +76,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+        return redirect('/home');
     }
 
 }
