@@ -11,7 +11,7 @@
                         </div>
                         <div class="col-lg-2">
                             <a href="{{ route('kelolaumkm.create') }}"
-                                class="btn btn-sm btn-primary p-2 rounded-2 w-100"><span class="ti ti-check"></span>
+                                class="btn btn-sm btn-primary p-2 fs-4 rounded-2 w-100"><span class="ti ti-check"></span>
                                 Daftar UMKM</a>
                         </div>
                     </div>
@@ -31,41 +31,46 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="mt-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4>Status Pesanan</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4">
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 style="text-align: center">Produk</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 style="text-align: center">Produk</h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 style="text-align: center">Produk</h4>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 @endif
             </div>
         </div>
+        @if(isset($umkm) && $umkm->status === 'Verifikasi')
+            <div class="mt-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4>Status Pesanan</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card" onclick="window.location.href='{{route('produk.index')}}'" style="cursor: pointer;">
+                            <div class="card-body">
+                                <a class="text-nowrap text-center d-block py-3 w-100">
+                                    <img src="../assets/images/logos/favicon.png" alt="">
+                                </a>
+                                <h4 style="text-align: center">Produk</h4>
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style="text-align: center">Produk</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 style="text-align: center">Produk</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>

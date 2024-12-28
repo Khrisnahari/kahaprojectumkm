@@ -724,7 +724,7 @@ h3.cart-title {
 
 /*------------Swiper Pagination -----------*/
 .product-store .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal {
-    bottom: 35px;
+    bottom: 0px;
 }
 .swiper-pagination span.swiper-pagination-bullet {
     width: 15px;

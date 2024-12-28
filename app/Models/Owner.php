@@ -22,4 +22,9 @@ class Owner extends Model
     {
         return $this->hasOne(Umkm::class, 'owner_id', 'id');
     }
+
+    public function produk()
+    {
+        return $this->hasMany(ProdukUmkm::class, 'owner_id', 'id');
+    }
 }

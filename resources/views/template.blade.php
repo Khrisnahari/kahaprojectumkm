@@ -97,11 +97,11 @@
                     @if (Auth::guard('owner')->check())
                     <a href="{{route('profile.index')}}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">My Profile</p>
+                      <p class="mb-0 fs-3">Akun Saya</p>
                     </a>
                     @endif
                     @if (Auth::guard('owner')->check() && !Auth::guard('owner')->user()->umkm)
-                    <a href="{{route('kelolaumkm.create')}}" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="{{route('profile.show')}}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-check fs-6"></i>
                       <p class="mb-0 fs-3">Daftarkan UMKM</p>
                     </a>
