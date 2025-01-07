@@ -14,6 +14,8 @@ class Umkm extends Model
         'kategori',
         'alamat',
         'deskripsi_umkm',
+        'jam_buka',
+        'jam_tutup',
         'status',
         'image',
         'owner_id'

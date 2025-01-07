@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProdukUmkm;
+use App\Models\Umkm;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,16 +21,20 @@ class ProdukUmkmController extends Controller
     }
 
     public function create() : View {
-        return view('produk.create');
+        $umkm = Umkm::where('owner_id', Auth::guard('owner')->user()->id)->first();
+        return view('produk.create',compact('umkm'));
     }
 
     public function store(Request $request): RedirectResponse {
+
+        $umkm = Umkm::where('owner_id', Auth::guard('owner')->user()->id)->first();
+        
         $request->validate([
             'image'             => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'nama_produk'       => 'required',
             'deskripsi'         => 'required|string|max:65535',
             'harga'             => 'required',
-            'stok'              => 'required'
+            'stok' => $umkm->kategori === 'Fashion' ? 'required|numeric' : 'nullable',
         ], [
             'image.required'            => 'Gambar wajib diunggah.',
             'image.image'               => 'File harus berupa gambar.',
@@ -46,12 +51,14 @@ class ProdukUmkmController extends Controller
         $image = $request->file('image');
         $image->store('produk', 'public');
 
+        $stok = $umkm->kategori === 'Fashion' ? $request->stok : 0;
+
         ProdukUmkm::create([
             'image'             => $image->hashName(),
             'nama_produk'       => $request->nama_produk,
             'deskripsi'         => $request->deskripsi,
             'harga'             => $request->harga,
-            'stok'              => $request->stok,
+            'stok'              => $stok,
             'owner_id'          => Auth::guard('owner')->user()->id
         ]);
 
@@ -61,22 +68,25 @@ class ProdukUmkmController extends Controller
     public function show(string $id): View
     {
         $produk = ProdukUmkm::findOrFail($id);
-        return view('produk.show', compact('produk'));
+        $umkm = Umkm::where('owner_id', Auth::guard('owner')->user()->id)->first();
+        return view('produk.show', compact('produk','umkm'));
     }
 
     public function edit(string $id): View
     {
         $produk = ProdukUmkm::findOrFail($id);
-        return view('produk.edit', compact('produk'));
+        $umkm = Umkm::where('owner_id', Auth::guard('owner')->user()->id)->first();
+        return view('produk.edit', compact('produk','umkm'));
     }
 
     public function update(Request $request, $id): RedirectResponse
     {
+        $umkm = Umkm::where('owner_id', Auth::guard('owner')->user()->id)->first();
         $request->validate([
             'nama_produk'       => 'required',
             'deskripsi'         => 'required|string|max:65535',
             'harga'             => 'required',
-            'stok'              => 'required'
+            'stok' => $umkm->kategori === 'Fashion' ? 'required|numeric' : 'nullable',
         ], [
             'nama_produk.required'      => 'Nama Produk tidak boleh kosong.',
             'deskripsi.required'        => 'Deskripsi tidak boleh kosong.',
@@ -97,21 +107,25 @@ class ProdukUmkmController extends Controller
             //delete old image
             Storage::delete('public/produk/' . $produk->image);
 
+            $stok = $umkm->kategori === 'Fashion' ? $request->stok : 0;
+
             $produk->update([
                 'image'             => $image->hashName(),
                 'nama_produk'       => $request->nama_produk,
                 'deskripsi'         => $request->deskripsi,
                 'harga'             => $request->harga,
-                'stok'              => $request->stok,
+                'stok'              => $stok,
                 'owner_id'          => Auth::guard('owner')->user()->id
             ]);
         } else {
+
+            $stok = $umkm->kategori === 'Fashion' ? $request->stok : 0;
 
             $produk->update([
                 'nama_produk'       => $request->nama_produk,
                 'deskripsi'         => $request->deskripsi,
                 'harga'             => $request->harga,
-                'stok'              => $request->stok,
+                'stok'              => $stok,
                 'owner_id'          => Auth::guard('owner')->user()->id
             ]);
         }

@@ -31,7 +31,9 @@ class KelolaUmkmController extends Controller
             'image'             => 'required|image|mimes:jpeg,jpg,png|max:2048',
             'nama_umkm'         => 'required',
             'alamat'            => 'required',
-            'deskripsi_umkm'    => 'required'
+            'deskripsi_umkm'    => 'required',
+            'jam_buka'    => 'required',
+            'jam_tutup'    => 'required',
         ], [
             'image.required'        => 'Gambar wajib diunggah.',
             'image.image'           => 'File harus berupa gambar.',
@@ -39,7 +41,9 @@ class KelolaUmkmController extends Controller
             'image.max'             => 'Ukuran gambar maksimal 2MB.',
             'nama_umkm.required'    => 'Nama UMKM tidak boleh kosong.',
             'alamat.required'       => 'Alamat wajib diisi.',
-            'deskripsi_umkm.required' => 'Tentang UMKM tidak boleh kosong.'
+            'deskripsi_umkm.required' => 'Tentang UMKM tidak boleh kosong.',
+            'jam_buka.required' => 'Jam Buka tidak boleh kosong.',
+            'jam_tutup.required' => 'Jam Tutup tidak boleh kosong.'
         ]);
 
 
@@ -53,6 +57,8 @@ class KelolaUmkmController extends Controller
             'kategori'       => $request->kategori,
             'alamat'         => $request->alamat,
             'deskripsi_umkm' => $request->deskripsi_umkm,
+            'jam_buka'       => $request->jam_buka,
+            'jam_tutup'      => $request->jam_tutup,
             'status'         => 'Belum Verifikasi',
             'owner_id'       => FacadesAuth::guard('owner')->user()->id
         ]);

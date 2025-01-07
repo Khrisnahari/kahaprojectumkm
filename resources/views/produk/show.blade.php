@@ -37,12 +37,14 @@
                                 {{ $produk->harga }}
                             </div>
                         </div>
+                        @if ($umkm && $umkm->kategori === 'Fashion')
                         <div class="mt-4">
                             <h6 style="font-weight: bold">Stok</h6>
                             <div class="fs-3 fw-semibold" style="margin-top: 3px">
                                 {{ $produk->stok }}
                             </div>
                         </div>
+                        @endif
                         <hr>
                         <div>
                             <a href="{{ route('produk.index') }}"

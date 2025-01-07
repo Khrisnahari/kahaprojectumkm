@@ -31,9 +31,9 @@
                                 <th class="border-bottom-0">
                                     <h6 style="font-weight: bold" class="mb-0">Harga</h6>
                                 </th>
-                                <th class="border-bottom-0">
+                                {{-- <th class="border-bottom-0">
                                     <h6 style="font-weight: bold" class="mb-0">Stok</h6>
-                                </th>
+                                </th> --}}
                                 <th class="border-bottom-0">
                                     <h6 style="font-weight: bold" class="mb-0">Aksi</h6>
                                 </th>
@@ -54,9 +54,9 @@
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">{{ $produk->harga }}</h6>
                                     </td>
-                                    <td class="border-bottom-0">
+                                    {{-- <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">{{ $produk->stok }}</h6>
-                                    </td>
+                                    </td> --}}
                                     <td class="border-bottom-0">
                                         <form id="deleteForm" action="{{ route('produk.destroy', $produk->id) }}"
                                             method="POST">

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->string('alamat');
             $table->string('deskripsi_umkm');
+            $table->string('jam_buka');
+            $table->string('jam_tutup');
             $table->string('status');
             $table->timestamps();
 

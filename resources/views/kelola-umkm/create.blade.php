@@ -44,6 +44,28 @@
                                 </div>
                             </div>
                             <div class="mt-3">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Jam Buka</label>
+                                            <input type="time" class="form-control" id="jam_buka" name="jam_buka">
+                                            @if ($errors->has('jam_buka'))
+                                                <span class="text-danger">{{ $errors->first('jam_buka') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="mb-3">
+                                            <label for="exampleInputEmail1" class="form-label">Jam Tutup</label>
+                                            <input type="time" class="form-control" id="jam_tutup" name="jam_tutup">
+                                            @if ($errors->has('jam_tutup'))
+                                                <span class="text-danger">{{ $errors->first('jam_tutup') }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-3">
                                 <div class="mb-3">
                                     <label class="form-label">Foto UMKM</label>
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"

@@ -44,6 +44,18 @@
                             </div>
                         </div>
                         <div class="mt-4">
+                            <h6 style="font-weight: bold">Jam Buka</h6>
+                            <div class="fs-3 fw-semibold" style="margin-top: 3px">
+                                {{ $umkm->jam_buka }}
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <h6 style="font-weight: bold">Jam Tutup</h6>
+                            <div class="fs-3 fw-semibold" style="margin-top: 3px">
+                                {{ $umkm->jam_tutup }}
+                            </div>
+                        </div>
+                        <div class="mt-4">
                             <h6 style="font-weight: bold">Status</h6>
                             <div class="fs-3 fw-semibold" style="margin-top: 3px">
                                 @if ($umkm->status == 'Verifikasi')

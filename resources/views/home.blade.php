@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Ministore</title>
+    <title>DARMASABA MARKET DIGITAL</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,8 +10,8 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -342,27 +342,25 @@
             <div class="row">
                 <div class="display-header d-flex justify-content-between pb-3">
                     <h2 class="display-7 text-dark text-uppercase">{{ $kategori }}</h2>
-                    <div class="btn-right">
+                    {{-- <div class="btn-right">
                         <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="swiper product-swiper">
                     <div class="swiper-wrapper" style="margin-bottom: 8%">
                         @foreach($produks as $produk)
                             <div class="swiper-slide">
-                                <div class="product-card position-relative">
-                                    <div class="image-holder">
+                                <div onclick="window.location.href='{{ route('menu', $produk->owner_id) }}'" style="cursor: pointer" class="product-card position-relative">
+                                    <div class="card image-holder">
                                         <img src="{{ asset('/storage/produk/'.$produk->image) }}" alt="{{ $produk->nama_produk }}" class="img-fluid img-thumbnail" style="width: 100%; height: 300px;">
-                                    </div>
-                                    <div class="cart-concern position-absolute">
-                                        <div class="cart-button d-flex">
-                                            <a href="#" class="btn btn-medium btn-black">Add to Cart<svg class="cart-outline"><use xlink:href="#cart-outline"></use></svg></a>
-                                        </div>
                                     </div>
                                     <div class="card-detail d-flex justify-content-between align-items-baseline pt-3">
                                         <h3 class="card-title text-uppercase">
                                             <a href="#">{{ $produk->nama_produk }}</a>
                                         </h3>
+                                    </div>
+                                    <div class="card-detail" style="text-transform: capitalize">
+                                      {{$produk->nama_umkm}}
                                     </div>
                                     <div class="card-detail">
                                       <span class="item-price text-primary">Rp {{ number_format($produk->harga, 0, ',', '.') }}</span>

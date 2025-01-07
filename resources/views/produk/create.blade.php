@@ -32,13 +32,15 @@
                             <span class="text-danger">{{ $errors->first('harga') }}</span>
                         @endif
                     </div>
+                    @if ($umkm->kategori === 'Fashion')
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Stok</label>
-                        <input type="stok" class="form-control" id="stok" name="stok">
+                        <label for="stok" class="form-label">Stok</label>
+                        <input type="number" class="form-control" id="stok" name="stok">
                         @if ($errors->has('stok'))
                             <span class="text-danger">{{ $errors->first('stok') }}</span>
                         @endif
                     </div>
+                    @endif
                     <div class="mb-3">
                         <label class="form-label">Foto Produk</label>
                         <input type="file" class="form-control @error('image') is-invalid @enderror"

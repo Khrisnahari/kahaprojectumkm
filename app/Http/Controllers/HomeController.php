@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ProdukUmkm;
+use App\Models\Umkm;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -10,7 +11,7 @@ class HomeController extends Controller
 {
     public function home(): View {
         // Ambil produk dan kategori terkait
-        $produk = ProdukUmkm::select('produk.*', 'umkm.kategori')
+        $produk = ProdukUmkm::select('produk.*', 'umkm.kategori','umkm.nama_umkm')
             ->join('umkm', 'umkm.owner_id', '=', 'produk.owner_id') // Join tabel produk dengan umkm
             ->orderBy('umkm.kategori') // Urutkan berdasarkan kategori
             ->orderBy('produk.id', 'desc') // Urutkan berdasarkan produk ID
@@ -32,6 +33,17 @@ class HomeController extends Controller
         // Kirim data ke view
         return view('home', compact('groupedByKategori'));
     }
+    public function menu($owner_id): View
+    {
+        // Cari UMKM berdasarkan owner_id
+        $umkmData = Umkm::where('owner_id', $owner_id)->firstOrFail();
+
+        // Ambil semua produk yang dimiliki oleh owner tersebut
+        $produks = ProdukUmkm::where('owner_id', $owner_id)->get();
+
+        // Return view ke halaman menu dengan data UMKM dan produk
+        return view('menu.menu', compact('umkmData', 'produks'));
+    }
     
     // Fungsi untuk menerapkan pola zigzag
     protected function applyZigzag($produks)
@@ -47,4 +59,5 @@ class HomeController extends Controller
         }
         return collect($zigzag); // Kembalikan sebagai koleksi
     }
+
 }

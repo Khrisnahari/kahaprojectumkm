@@ -36,6 +36,7 @@
                                 <span class="text-danger">{{ $errors->first('harga') }}</span>
                             @endif
                         </div>
+                        @if ($umkm->kategori === 'Fashion')
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Stok</label>
                             <input type="text" class="form-control" id="stok" name="stok"
@@ -44,6 +45,7 @@
                                 <span class="text-danger">{{ $errors->first('stok') }}</span>
                             @endif
                         </div>
+                        @endif
                         <div class="mt-3">
                             <div class="mb-3">
                                 <label class="form-label">Foto Produk</label>

@@ -50,7 +50,7 @@ Route::post('/umkm/{id}/verifikasi', [UmkmController::class, 'verifikasi'])->nam
 
 // Frontend DAMAR
 Route::get('home',   [HomeController::class, 'home'])->name('home');
-
+Route::get('/menu/{owner_id}', [HomeController::class, 'menu'])->name('menu');
 // Route::middleware(['auth:admin', PreventBackHistory::class])->group(function () {
 //     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 //     Route::resource('/umkm', UmkmController::class);
