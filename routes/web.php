@@ -31,6 +31,9 @@ Route::middleware(['auth:admin'])->group(function () {
 Route::middleware(['auth:owner'])->group(function () {
     Route::resource('/kelolaumkm', KelolaUmkmController::class);
     Route::resource('/profile', ProfileController::class);
+    Route::get('/detail-umkm/{id}',   [ProfileController::class, 'detailUmkm'])->name('detailumkm');
+    Route::put('/update-umkm/{id}',   [ProfileController::class, 'updateUmkm'])->name('updateumkm');
+
     Route::resource('/produk', ProdukUmkmController::class)->except(['show','edit']);
 
     // Route untuk show
@@ -51,7 +54,3 @@ Route::post('/umkm/{id}/verifikasi', [UmkmController::class, 'verifikasi'])->nam
 // Frontend DAMAR
 Route::get('home',   [HomeController::class, 'home'])->name('home');
 Route::get('/menu/{owner_id}', [HomeController::class, 'menu'])->name('menu');
-// Route::middleware(['auth:admin', PreventBackHistory::class])->group(function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-//     Route::resource('/umkm', UmkmController::class);
-// });

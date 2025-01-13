@@ -12,12 +12,20 @@ use Illuminate\View\View;
 
 class ProdukUmkmController extends Controller
 {
-    public function index() : View {
+    public function index(): View {
         // Ambil ID owner yang sedang login
         $ownerId = Auth::guard('owner')->user()->id;
+    
+        // Ambil produk berdasarkan owner
         $produks = ProdukUmkm::where('owner_id', $ownerId)->latest()->paginate(10);
+    
+        // Ambil data UMKM berdasarkan owner
+        $umkm = Umkm::where('owner_id', $ownerId)->first();
+    
         $no = ($produks->currentPage() - 1) * $produks->perPage() + 1;
-        return view('produk.index',compact('produks', 'no'));
+    
+        // Kirimkan $umkm ke view
+        return view('produk.index', compact('produks', 'no', 'umkm'));
     }
 
     public function create() : View {

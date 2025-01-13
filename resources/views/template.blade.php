@@ -97,17 +97,15 @@
                     @if (Auth::guard('owner')->check())
                     <a href="{{route('profile.index')}}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
-                      <p class="mb-0 fs-3">Akun Saya</p>
+                      <p class="mb-0 fs-3">My Profile</p>
                     </a>
                     @endif
-                    {{-- <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">My Account</p>
+                    @if (Auth::guard('owner')->check() && isset($umkm))
+                    <a href="{{route('detailumkm', $umkm->id)}}" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-eye fs-6"></i>
+                      <p class="mb-0 fs-3">Detail Umkm</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-list-check fs-6"></i>
-                      <p class="mb-0 fs-3">My Task</p>
-                    </a> --}}
+                    @endif
                     <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
@@ -120,9 +118,6 @@
       <div class="container-fluid">
           @yield('content')
       </div>
-      {{-- <footer class="py-6 px-6 text-center">
-        <p class="mb-0 fs-4">Design and Developed by <a href="https://adminmart.com/" target="_blank" class="pe-1 text-primary text-decoration-underline">AdminMart.com</a> Distributed by <a href="https://themewagon.com">ThemeWagon</a></p>
-      </footer> --}}
     </div>
   </div>
   <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js')}}"></script>
