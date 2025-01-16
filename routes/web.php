@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaUmkmController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukUmkmController;
 use App\Http\Controllers\ProfileController;
@@ -19,13 +22,16 @@ Route::resource('/products', ProductController::class);
 // Autentikasi
 Route::get('/login',   [AuthController::class, 'login'])->name('login');
 Route::get('/registrasi',   [AuthController::class, 'registrasi'])->name('registrasi');
+Route::get('/registrasipembeli',   [AuthController::class, 'registrasipembeli'])->name('registrasipembeli');
 Route::post('/login',   [AuthController::class, 'prosesLogin'])->name('proses.login');
 Route::post('/registrasi',   [AuthController::class, 'prosesRegistrasi'])->name('proses.registrasi');
+Route::post('/registrasi',   [AuthController::class, 'prosesRegistrasiPembeli'])->name('proses.registrasipembeli');
 Route::get('/logout',   [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
     Route::resource('/umkm', UmkmController::class);
+    Route::resource('/pembeli', PembeliController::class);
 });
 
 Route::middleware(['auth:owner'])->group(function () {
@@ -46,6 +52,11 @@ Route::middleware(['auth:owner'])->group(function () {
        ->middleware(CheckProductOwnership::class)
        ->name('produk.edit');
     
+});
+
+Route::middleware(['auth:pembeli'])->group(function () {
+    Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 });
 
 // UMKM

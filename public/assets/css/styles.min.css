@@ -11005,6 +11005,19 @@ fieldset:disabled .btn {
 .z-3 {
     z-index: 3 !important;
 }
+
+.separator-line hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0;
+}
+
+.separator-line span {
+    font-weight: bold;
+    color: #555;
+    white-space: nowrap;
+}
+
 @media (min-width: 576px) {
     .float-sm-start {
         float: left !important;

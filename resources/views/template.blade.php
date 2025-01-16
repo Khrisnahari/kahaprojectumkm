@@ -51,6 +51,14 @@
                     <span class="hide-menu">Data UMKM</span>
                 </a>
             </li>
+            <li class="sidebar-item {{ Request::is('pembeli*') ? 'active' : '' }}">
+              <a class="sidebar-link" href="{{ url('pembeli') }}" aria-expanded="false">
+                  <span>
+                      <i class="ti ti-list"></i>
+                  </span>
+                  <span class="hide-menu">Data Pembeli</span>
+              </a>
+          </li>
           @elseif (Auth::guard('owner')->check())
             <li class="sidebar-item {{ Request::is('kelolaumkm*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ url('kelolaumkm') }}" aria-expanded="false">

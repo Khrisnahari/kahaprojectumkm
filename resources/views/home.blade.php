@@ -155,73 +155,43 @@
                   <a class="nav-link me-4" href="#company-services">Services</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#mobile-products">Products</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="#smart-watches">Watches</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link me-4" href="#yearly-sale">Sale</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="#latest-blog">Blog</a>
                 </li>
+                @if (Auth::guard('pembeli')->check())
+                <!-- Jika pembeli sudah login -->
                 <li class="nav-item dropdown">
-                  <a class="nav-link me-4 dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Pages</a>
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="about.html" class="dropdown-item">About</a>
-                    </li>
-                    <li>
-                      <a href="blog.html" class="dropdown-item">Blog</a>
-                    </li>
-                    <li>
-                      <a href="shop.html" class="dropdown-item">Shop</a>
-                    </li>
-                    <li>
-                      <a href="cart.html" class="dropdown-item">Cart</a>
-                    </li>
-                    <li>
-                      <a href="checkout.html" class="dropdown-item">Checkout</a>
-                    </li>
-                    <li>
-                      <a href="single-post.html" class="dropdown-item">Single Post</a>
-                    </li>
-                    <li>
-                      <a href="single-product.html" class="dropdown-item">Single Product</a>
-                    </li>
-                    <li>
-                      <a href="contact.html" class="dropdown-item">Contact</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <div class="user-items ps-5">
-                    <ul class="d-flex justify-content-end list-unstyled">
-                      <li class="search-item pe-3">
-                        <a href="#" class="search-button">
-                          <svg class="search">
-                            <use xlink:href="#search"></use>
-                          </svg>
+                    <a class="nav-link dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                      {{ Auth::guard('pembeli')->user()->username }}
+                    </a>        
+                    <ul class="dropdown-menu" style="margin-left:-50px">
+                        <li>
+                            <a href="about.html" class="dropdown-item">Profile</a>
+                        </li>
+                        <li>
+                          <a href="{{ route('cart.index') }}" class="dropdown-item">
+                            Pesanan Saya
+                            <span id="cart-badge" class="badge bg-danger text-white ms-2">{{ session('cart.totalItems', 0) }}</span>
                         </a>
-                      </li>
-                      <li class="pe-3">
-                        <a href="{{url('login')}}">
-                          <svg class="user">
-                            <use xlink:href="#user"></use>
-                          </svg>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="cart.html">
-                          <svg class="cart">
-                            <use xlink:href="#cart"></use>
-                          </svg>
-                        </a>
-                      </li>
+                        </li>
+                        <li>
+                            <a href="{{ route('logout') }}" class="dropdown-item text-danger"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                        </li>
                     </ul>
-                  </div>
                 </li>
+                <!-- Form logout -->
+                <form id="logout-form" action="{{ url('logout') }}" method="GET" style="display: none;">
+                    @csrf
+                </form>
+                @else
+                    <!-- Jika pembeli belum login -->
+                    <li class="nav-item">
+                        <a class="nav-link me-4 btn btn-primary text-white" href="{{ url('login') }}">Login</a>
+                    </li>
+                @endif
               </ul>
             </div>
           </div>

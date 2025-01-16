@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pasar Digital Darmasaba</title>
   <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
-  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />    
 </head>
 
 <body>
@@ -41,11 +41,27 @@
                       <span class="text-danger">{{ $errors->first('password') }}</span>
                       @endif
                     </div>
+                    <!-- Input hidden untuk redirect -->
+                    <input type="hidden" name="redirect" value="{{ request('redirect', route('home')) }}">
                     <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Masuk</button>
                     <div class="d-flex align-items-center justify-content-center">
                       <p class="fs-4 mb-0 fw-bold">Daftar Sebagai UMKM?</p>
-                      <a class="text-primary fw-bold ms-2" href="{{route('registrasi')}}">Daftar</a>
-                    </div>
+                      <a class="text-primary fw-bold ms-2" href="{{ route('registrasi') }}">Daftar</a>
+                  </div>
+                  
+                  <div class="d-flex align-items-center justify-content-center my-3">
+                      <div class="separator-line d-flex align-items-center">
+                          <hr class="flex-grow-1" />
+                          <span class="mx-2">Atau</span>
+                          <hr class="flex-grow-1" />
+                      </div>
+                  </div>
+                  
+                  <div class="d-flex align-items-center justify-content-center">
+                      <p class="fs-4 mb-0 fw-bold">Daftar Sebagai Pembeli?</p>
+                      <a class="text-primary fw-bold ms-2" href="{{ route('registrasipembeli') }}">Daftar</a>
+                  </div>
+                  
                   </div>
                 </form>
               </div>

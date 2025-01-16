@@ -48,6 +48,10 @@ return [
             'driver' => 'session',
             'provider' => 'owners', // Pastikan provider "admins" sudah ada
         ],
+        'pembeli' => [
+            'driver' => 'session',
+            'provider' => 'pembelis', // Pastikan provider "admins" sudah ada
+        ],
     ],
 
     /*
@@ -79,6 +83,10 @@ return [
         'owners' => [
             'driver' => 'eloquent',
             'model' => App\Models\Owner::class,
+        ],
+        'pembelis' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pembeli::class,
         ],
 
         // 'users' => [

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Owner;
+use App\Models\Pembeli;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -16,6 +18,10 @@ class AuthController extends Controller
 
     public function registrasi() {
         return view('registrasi');
+    }
+
+    public function registrasipembeli() {
+        return view ('registrasipembeli');
     }
 
     public function prosesLogin(Request $request) : RedirectResponse
@@ -36,6 +42,19 @@ class AuthController extends Controller
  
             return redirect()->intended('kelolaumkm');
         }
+
+        if (Auth::guard('pembeli')->attempt($credentials)) {
+            $request->session()->regenerate();
+            
+            $totalItems = Cart::where('pembeli_id', Auth::guard('pembeli')->user()->id)->sum('quantity');
+            session(['cart.totalItems' => $totalItems]);
+
+            // Cek apakah ada parameter redirect
+            $redirectUrl = $request->input('redirect', route('home'));
+    
+            return redirect($redirectUrl);
+        }
+    
  
         return back()->withErrors([
             'username' => 'Username salah!',
@@ -67,6 +86,39 @@ class AuthController extends Controller
 
         ]);
         $owner->save();
+
+        return redirect()->route('login')->with('success', 'Registrasi Berhasil. Silahkan login!');
+    }
+
+
+    public function prosesRegistrasiPembeli(Request $request)
+    {
+        $request->validate([
+            'namalengkap'     => 'required',
+            'email'   => 'required|email',
+            'username'     => 'required|min:5',
+            'no_telp'     => 'required',
+            'alamat'     => 'required',
+            'password'   => 'required|min:5',
+        ], [
+            'namalengkap.required'        => 'Nama Lengkap tidak boleh kosong',
+            'email.required'    => 'Email tidak boleh kosong',
+            'username.required'       => 'Username tidak boleh kosong',
+            'telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'alamat.required' => 'Alamat tidak boleh kosong',
+            'password.required' => 'Password tidak boleh kosong',
+        ]);
+
+        $pembeli = new Pembeli([
+            'username'   => $request->username,
+            'password' => Hash::make($request['password']),
+            'email' => $request->email,
+            'namalengkap' => $request->namalengkap,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat
+
+        ]);
+        $pembeli->save();
 
         return redirect()->route('login')->with('success', 'Registrasi Berhasil. Silahkan login!');
     }

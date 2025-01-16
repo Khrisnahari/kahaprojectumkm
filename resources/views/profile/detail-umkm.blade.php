@@ -63,7 +63,7 @@
                                         </div>
                                         <div class="mt-3">
                                             <div class="mb-3">
-                                                <label class="form-label">Foto UMKM</label>
+                                                <label class="form-label">Foto UMKM 1:1</label>
                                                 <input type="file"
                                                     class="form-control @error('image') is-invalid @enderror"
                                                     name="image">

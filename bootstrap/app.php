@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->web([
             \App\Http\Middleware\PreventBackHistory::class,
+            \App\Http\Middleware\UpdateCartBadge::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
