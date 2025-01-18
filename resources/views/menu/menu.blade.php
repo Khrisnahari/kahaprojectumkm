@@ -39,7 +39,11 @@
         @endphp
 
         @if ($now >= $umkmData->jam_buka && $now <= $umkmData->jam_tutup)
-            <h2 class="text-capitalize">Menu</h2>
+            @if($umkmData->kategori == 'Fashion')
+                <h2 class="text-capitalize">Produk</h2>
+                @else 
+                <h2 class="text-capitalize">Menu</h2>
+            @endif
             <hr> 
             <div class="row mt-3">
                 @foreach($produks as $produk)
@@ -111,6 +115,10 @@
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{ asset('js/plugins.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script>
     function addToCart(productId) {
     const quantity = document.getElementById(`quantity-${productId}`).value;

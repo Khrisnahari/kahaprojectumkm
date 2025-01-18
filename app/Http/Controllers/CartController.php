@@ -22,7 +22,7 @@ class CartController extends Controller
 
         return view('cart.index', compact('carts', 'totalItems'));
     }
-    
+
     public function add(Request $request)
     {
         $request->validate([
@@ -57,5 +57,25 @@ class CartController extends Controller
             'message' => 'Produk berhasil ditambahkan ke keranjang.',
             'totalItems' => $totalItems,
         ]);
+    }
+
+    public function increaseQuantity($id)
+    {
+        $cart = Cart::findOrFail($id);
+        $cart->quantity += 1;
+        $cart->save();
+
+        return back();
+    }
+
+    public function decreaseQuantity($id)
+    {
+        $cart = Cart::findOrFail($id);
+        if ($cart->quantity > 1) {
+            $cart->quantity -= 1;
+            $cart->save();
+        }
+
+        return back();
     }
 }

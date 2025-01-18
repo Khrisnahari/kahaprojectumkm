@@ -2,6 +2,8 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -21,6 +23,19 @@ return new class extends Migration
             $table->string('alamat')->nullable();
             $table->timestamps();
         });
+
+        DB::table('pembeli')->insert(
+            array(
+                'username' => 'indra29 ',
+                'password' => Hash::make('indra29'),
+                'email' => 'indrapurnamaa@gmail.com',
+                'namalengkap' => 'Kadek Indra Purnama Mertayana',
+                'no_telp' => '085737358815',
+                'alamat' => 'Jimbaran',
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
+            )
+        );
     }
 
     /**

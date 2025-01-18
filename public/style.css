@@ -114,6 +114,11 @@ a:hover {
     background: var(--light-blue-color);
 }
 
+/* Dashed red border */
+.hr-dashed {
+  border-top: 2px dashed black;
+}
+
 /* - Section Padding
 --------------------------------------------------------------*/
 .padding-xsmall {

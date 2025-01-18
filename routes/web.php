@@ -24,9 +24,12 @@ Route::get('/login',   [AuthController::class, 'login'])->name('login');
 Route::get('/registrasi',   [AuthController::class, 'registrasi'])->name('registrasi');
 Route::get('/registrasipembeli',   [AuthController::class, 'registrasipembeli'])->name('registrasipembeli');
 Route::post('/login',   [AuthController::class, 'prosesLogin'])->name('proses.login');
-Route::post('/registrasi',   [AuthController::class, 'prosesRegistrasi'])->name('proses.registrasi');
 Route::post('/registrasi',   [AuthController::class, 'prosesRegistrasiPembeli'])->name('proses.registrasipembeli');
 Route::get('/logout',   [AuthController::class, 'logout'])->name('logout');
+
+Route::prefix('user')->group(function () {
+    Route::post('/registrasi', [AuthController::class, 'prosesRegistrasi'])->name('proses.registrasi');
+});
 
 Route::middleware(['auth:admin'])->group(function () {
     Route::resource('/dashboard', DashboardController::class);
@@ -57,6 +60,9 @@ Route::middleware(['auth:owner'])->group(function () {
 Route::middleware(['auth:pembeli'])->group(function () {
     Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::patch('/cart/{id}/increase', [CartController::class, 'increaseQuantity'])->name('cart.increase');
+    Route::patch('/cart/{id}/decrease', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+
 });
 
 // UMKM

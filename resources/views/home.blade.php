@@ -162,11 +162,11 @@
                 </li>
                 @if (Auth::guard('pembeli')->check())
                 <!-- Jika pembeli sudah login -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown me-lg-5">
                     <a class="nav-link dropdown-toggle link-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
                       {{ Auth::guard('pembeli')->user()->username }}
                     </a>        
-                    <ul class="dropdown-menu" style="margin-left:-50px">
+                    <ul class="dropdown-menu">
                         <li>
                             <a href="about.html" class="dropdown-item">Profile</a>
                         </li>
