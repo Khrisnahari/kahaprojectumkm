@@ -28,5 +28,10 @@ class ProdukUmkm extends Model
         return $this->belongsTo(Umkm::class, 'umkm_id', 'id');
     }
 
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'pembeli_id');
+    }
+
     protected $table = 'produk';
 }

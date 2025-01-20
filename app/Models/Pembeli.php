@@ -18,4 +18,14 @@ class Pembeli extends Model
         'alamat'
     ];
     protected $table = 'pembeli';
+
+    public function transaksi()
+    {
+        return $this->hasMany(Transaksi::class, 'pembeli_id');
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class, 'pembeli_id');
+    }
 }

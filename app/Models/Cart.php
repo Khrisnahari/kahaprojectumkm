@@ -17,4 +17,8 @@ class Cart extends Model
     {
         return $this->belongsTo(ProdukUmkm::class, 'produk_id');
     }
+
+    public function pembeli() {
+        return $this->belongsTo(Pembeli::class, 'pembeli_id');
+    } 
 }

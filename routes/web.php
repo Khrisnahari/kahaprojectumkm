@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaUmkmController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\MidtransNotificationController;
 use App\Http\Controllers\PembeliController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukUmkmController;
@@ -62,6 +63,11 @@ Route::middleware(['auth:pembeli'])->group(function () {
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::patch('/cart/{id}/increase', [CartController::class, 'increaseQuantity'])->name('cart.increase');
     Route::patch('/cart/{id}/decrease', [CartController::class, 'decreaseQuantity'])->name('cart.decrease');
+    // Route::post('/checkout', [CheckoutController::class, 'checkout'])->name('checkout');
+    Route::post('/midtrans/notification', [MidtransNotificationController::class, 'handleNotification']);
+    Route::post('/checkout', [CheckoutController::class, 'proses'])->name('checkout.proses');
+    Route::get('/checkout/{id}', [CheckoutController::class, 'checkout'])->name('checkout.index');
+    Route::get('/checkout', [CheckoutController::class, 'success'])->name('checkout.success');
 
 });
 

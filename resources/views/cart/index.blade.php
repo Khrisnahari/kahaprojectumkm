@@ -20,6 +20,9 @@
 
                     <div class="row mt-4 align-items-center">
                         <div class="col-3">
+                            <img src="{{ asset('/storage/produk/'.$cart->produk->image) }}" class="img-fluid img-thumbnail" style="width: 100%; height: 100px;" alt="{{ $cart->produk->nama_produk }}">
+                        </div>
+                        <div class="col-3">
                             <h6>Qty</h6>
                             <div class="d-flex align-items-center">
                                 <form action="{{ route('cart.decrease', $cart->id) }}" method="POST" style="display: inline;">
@@ -35,13 +38,12 @@
                                 </form>
                             </div>
                         </div>
-
-                        <div class="col-5">
+                        <div class="col-3">
                             <h6>Nama</h6>
                             <h6>{{ $cart->produk->nama_produk }}</h6>
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-3">
                             <h6>Harga</h6>
                             <h6>Rp {{ number_format($cart->produk->harga, 0, ',', '.') }}</h6>
                         </div>
@@ -78,8 +80,10 @@
 
                     <div class="row mt-3">
                         <div class="col-6">
-                            <form action="/" method="POST">
+                            <form action="{{ route('checkout.proses') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="total" value="{{ $totalHarga }}">
+                                <input type="hidden" name="produk_id" value="{{ $carts->first()->produk_id }}"> <!-- Ambil produk_id -->
                                 <button type="submit" class="btn btn-sm btn-success w-100">Checkout</button>
                             </form>
                         </div>
@@ -88,7 +92,6 @@
                         </div>
                     </div>
                 @endif
-
             </div>
         </div>
     </div>

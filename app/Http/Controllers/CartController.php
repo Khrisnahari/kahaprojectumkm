@@ -13,7 +13,7 @@ class CartController extends Controller
     public function index()
     {
         // Ambil data keranjang berdasarkan pengguna yang sedang login
-        $carts = Cart::with('produk')
+        $carts = Cart::with('produk','pembeli')
             ->where('pembeli_id', Auth::guard('pembeli')->user()->id)
             ->get();
 
@@ -74,7 +74,10 @@ class CartController extends Controller
         if ($cart->quantity > 1) {
             $cart->quantity -= 1;
             $cart->save();
+        } else {
+            $cart->delete();
         }
+    
 
         return back();
     }
