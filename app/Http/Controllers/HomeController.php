@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Berita;
 use App\Models\ProdukUmkm;
 use App\Models\Umkm;
 use Illuminate\Http\Request;
@@ -29,9 +30,12 @@ class HomeController extends Controller
         $groupedByKategori = $groupedByKategori->map(function ($produks) {
             return $this->applyZigzag($produks); // Terapkan fungsi zigzag pada setiap kategori
         });
+
+       // Ambil berita terbaru
+       $beritas = Berita::latest()->take(5)->get(); // Ambil 5 berita terbaru
     
-        // Kirim data ke view
-        return view('home', compact('groupedByKategori'));
+       // Kirim data ke view
+       return view('home', compact('groupedByKategori','beritas'));
     }
     public function menu($owner_id): View
     {

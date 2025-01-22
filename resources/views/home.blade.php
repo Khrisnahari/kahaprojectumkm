@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DARMASABA MARKET DIGITAL</title>
+    <title>DARMASABA DIGITAL MARKET</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -132,8 +132,8 @@
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="index.html">
-            <img src="images/main-logo.png" class="logo">
-          </a>
+            <img src="images/logo-damart-landscape.png" class="logo" alt="Logo" style="height: 80px">
+        </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon">
               <use xlink:href="#navbar-icon"></use>
@@ -142,7 +142,7 @@
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
               <a class="navbar-brand" href="index.html">
-                <img src="images/main-logo.png" class="logo">
+                <img src="images/logo-damart-landscape.png" class="logo">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
@@ -152,7 +152,7 @@
                   <a class="nav-link me-4 active" href="#billboard">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link me-4" href="#company-services">Services</a>
+                  <a class="nav-link me-4" href="#company-services">UMKM</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link me-4" href="#yearly-sale">Sale</a>
@@ -250,56 +250,57 @@
     </section>
     <section id="company-services" class="padding-large">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="cart-outline">
-                  <use xlink:href="#cart-outline" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Free delivery</h3>
-                <p>Consectetur adipi elit lorem ipsum dolor sit amet.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="quality">
-                  <use xlink:href="#quality" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Quality guarantee</h3>
-                <p>Dolor sit amet orem ipsu mcons ectetur adipi elit.</p>
+          <div class="row">
+            <div class="col-lg-3 col-md-6 pb-3">
+              <div class="icon-box d-flex">
+                <div class="icon pe-3 pb-3">
+                  <svg class="cart-outline">
+                    <use xlink:href="#cart-outline"></use>
+                  </svg>
+                </div>
+                <div class="icon-box-content">
+                  <h3 class="card-title text-white">Pengiriman Gratis</h3>
+                  <h6>Cepat dan Gratis Sampai di Depan Pintu Anda!</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="price-tag">
-                  <use xlink:href="#price-tag" />
-                </svg>
-              </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">Daily offers</h3>
-                <p>Amet consectetur adipi elit loreme ipsum dolor sit.</p>
+            <div class="col-lg-3 col-md-6 pb-3">
+              <div class="icon-box d-flex">
+                <div class="icon pe-3 pb-3">
+                  <svg class="quality">
+                    <use xlink:href="#quality"></use>
+                  </svg>
+                </div>
+                <div class="icon-box-content">
+                  <h3 class="card-title text-white">Jaminan Kualitas</h3>
+                  <h6>Kepuasan Anda, Prioritas Kami.</h6>
+                </div>
               </div>
             </div>
-          </div>
-          <div class="col-lg-3 col-md-6 pb-3">
-            <div class="icon-box d-flex">
-              <div class="icon-box-icon pe-3 pb-3">
-                <svg class="shield-plus">
-                  <use xlink:href="#shield-plus" />
-                </svg>
+            <div class="col-lg-3 col-md-6 pb-3">
+              <div class="icon-box d-flex">
+                <div class="icon pe-3 pb-3">
+                  <svg class="price-tag">
+                    <use xlink:href="#price-tag"></use>
+                  </svg>
+                </div>
+                <div class="icon-box-content">
+                  <h3 class="card-title text-white">Penawaran Harian</h3>
+                  <h6>Penawaran Eksklusif Setiap Hari!</h6>
+                </div>
               </div>
-              <div class="icon-box-content">
-                <h3 class="card-title text-uppercase text-dark">100% secure payment</h3>
-                <p>Rem Lopsum dolor sit amet, consectetur adipi elit.</p>
+            </div>
+            <div class="col-lg-3 col-md-6 pb-3">
+              <div class="icon-box d-flex">
+                <div class="icon pe-3 pb-3">
+                  <svg class="shield-plus">
+                    <use xlink:href="#shield-plus" />
+                  </svg>
+                </div>
+                <div class="icon-box-content">
+                  <h3 class="card-title text-white">Pembayaran Aman</h3>
+                  <h6>Berbelanja Aman, Pembayaran Terjamin.</h6>
+                </div>
               </div>
             </div>
           </div>
@@ -466,6 +467,63 @@
         </div>
       </div>
     </section>
+
+    <section id="latest-blog" class="padding-large">
+      <div class="container">
+        <div class="row">
+          <div class="display-header d-flex justify-content-between pb-3">
+            <h2 class="display-7 text-dark text-uppercase">Darmasaba News</h2>
+            <div class="btn-right">
+              <a href="blog.html" class="btn btn-medium btn-normal text-uppercase">Read Blog</a>
+            </div>
+          </div>
+          <div class="container mt-4">
+            <div class="row">
+                <!-- Berita Utama -->
+                @if (isset($beritas) && $beritas->isNotEmpty())
+                <div class="col-lg-8 col-sm-12 mb-4">
+                    <div class="card border-none">
+                        <div class="card-image">
+                            <img src="{{ asset('uploads/' . $beritas[0]->gambar) }}" alt="{{ $beritas[0]->judul }}" class="img-fluid">
+                        </div>
+                        <div class="card-body">
+                          <h3 class="card-title">
+                            <a href="{{ route('berita.show', $beritas[0]->id) }}" class="text-decoration-none text-dark">{{ $beritas[0]->judul }}</a>
+                        </h3>                        
+                            <p class="text-muted">
+                                {{ \Carbon\Carbon::parse($beritas[0]->created_at)->format('d M Y') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            @else
+                <p>Tidak ada berita terbaru.</p>
+            @endif            
+        
+                <!-- Berita Lainnya -->
+                <div class="col-lg-4 col-sm-12">
+                    @foreach ($beritas->skip(1) as $beritas)
+                    <div class="d-flex mb-3">
+                        <div class="me-3">
+                            <img src="{{ asset('uploads/' . $beritas->gambar) }}" alt="{{ $beritas->judul }}" class="img-thumbnail" style="width: 100px; height: 100px; object-fit: cover;">
+                        </div>
+                        <div>
+                          <h6 class="mb-1">
+                            <a href="{{ route('berita.show', $beritas->id) }}" class="text-decoration-none text-dark">{{ $beritas->judul }}</a>
+                          </h6>
+                            <p class="text-muted mb-0">
+                                {{ \Carbon\Carbon::parse($beritas->created_at)->format('d M Y') }} • {{ $beritas->halaman }}
+                            </p>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+      </div>      
+    </section>
+
+{{-- 
     <section id="latest-blog" class="padding-large">
       <div class="container">
         <div class="row">
@@ -527,7 +585,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
     <section id="testimonials" class="position-relative">
       <div class="container">
         <div class="row">
