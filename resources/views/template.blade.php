@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/logos/favicon.png')}}" />
+  <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-damart-icon.png')}}" />
   <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css')}}" />
 </head>
 
@@ -18,8 +18,9 @@
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
-          <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{asset('assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
+          
+          <a href="dashboard" class="text-nowrap logo-img">
+            <img src="{{asset('images/logo-damart-landscape.png')}}" height="80" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>

@@ -26,6 +26,23 @@
     width: 50px;   /* Ukuran ikon, bisa disesuaikan */
     height: 50px;  /* Ukuran ikon, bisa disesuaikan */
   }
-  
+
+  .modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-body iframe {
+    border-radius: 5px;
+}
+
+
+  /* .product-store {
+    background: linear-gradient(to right, #A8E063, #FFDD00); 
+    padding: 50px 0; 
+    border-radius: 10px;
+    color: #333; 
+} */
+
 
 /*# sourceMappingURL=bootstrap.min.css.map */

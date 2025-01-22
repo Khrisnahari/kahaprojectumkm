@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DARMASABA DIGITAL MARKET</title>
+    <title>Darmasaba Digital Market</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -189,7 +189,7 @@
                 @else
                     <!-- Jika pembeli belum login -->
                     <li class="nav-item">
-                        <a class="nav-link me-4 btn btn-primary text-white" href="{{ url('login') }}">Login</a>
+                        <a class="nav-link me-4 icon-box d-flex text-white" href="{{ url('login') }}">Login</a>
                     </li>
                 @endif
               </ul>
@@ -248,7 +248,7 @@
         </svg>
       </div>
     </section>
-    <section id="company-services" class="padding-large">
+    <section id="company-services" class="padding-large" style="background-color: #d4f1f9;">
       <div class="container">
           <div class="row">
             <div class="col-lg-3 col-md-6 pb-3">
@@ -308,7 +308,7 @@
       </div>
     </section>
     @foreach($groupedByKategori as $kategori => $produks)
-    <section id="mobile-products" class="product-store position-relative padding-large no-padding-top">
+    <section id="mobile-products" class="product-store position-relative padding-large no-padding-top" style="background-color: #d4f1f9;">
         <div class="container">
             <div class="row">
                 <div class="display-header d-flex justify-content-between pb-3">
@@ -468,7 +468,7 @@
       </div>
     </section>
 
-    <section id="latest-blog" class="padding-large">
+    <section id="latest-blog" class="padding-large" style="background-color: #d4f1f9;">
       <div class="container">
         <div class="row">
           <div class="display-header d-flex justify-content-between pb-3">
@@ -695,16 +695,39 @@
             <h2 class="display-7">Shop Our Insta</h2>
           </div>
           <div class="d-flex flex-wrap">
-            <figure class="instagram-item pe-2">
-              <a href="https://templatesjungle.com/" class="image-link position-relative">
+          <!-- Instagram Item -->
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
                 <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
-                  <svg class="instagram">
-                    <use xlink:href="#instagram"></use>
-                  </svg>
+                    <svg class="instagram">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
                 </div>
-              </a>
-            </figure>
+            </a>
+          </figure>
+
+          <!-- Modal -->
+          <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instagramModalLabel">Instagram Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/insta-item1.jpg" alt="instagram post" class="img-fluid">
+                        <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="https://www.instagram.com/jegegbagusdarmasaba?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                          class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+
+
             <figure class="instagram-item pe-2">
               <a href="https://templatesjungle.com/" class="image-link position-relative">
                 <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
@@ -894,5 +917,7 @@
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="js/plugins.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

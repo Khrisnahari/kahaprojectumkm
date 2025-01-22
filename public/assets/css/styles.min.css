@@ -16922,3 +16922,29 @@ ul {
 .timeline-widget .timeline-item .timeline-badge.badge-primary {
     border: 2px solid #5d87ff;
 }
+
+.login-background {
+    background-image: url('../images/bg-login.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* .card-gradient {
+    background: linear-gradient(to right, #66D9EF, #8AEF74); 
+    color: white; 
+    border: none;
+  } */
+  
+  .gradient-card {
+    background: linear-gradient(to right, #66D9EF, #8AEF74); /* Gradasi biru muda ke hijau muda */
+    color: white; /* Warna teks */
+    border: none; /* Menghapus border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Opsional: Memberikan bayangan */
+    border-radius: 8px; /* Opsional: Membulatkan sudut */
+}
+
+.gradient-card .card-title,
+.gradient-card h4 {
+    color: white; /* Warna teks tetap putih */
+}

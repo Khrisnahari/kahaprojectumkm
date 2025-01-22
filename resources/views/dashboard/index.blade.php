@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body gradient-card">
                     <h5 class="card-title mb-9 fw-semibold">Total UMKM</h5>
                     <div class="row align-items-center">
                         <div class="col-lg-4">
@@ -16,7 +16,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body gradient-card">
                     <h5 class="card-title mb-9 fw-semibold">Total Terverifikasi</h5>
                     <div class="row align-items-center">
                         <div class="col-lg-4">
@@ -28,7 +28,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body gradient-card">
                     <h5 class="card-title mb-9 fw-semibold">Total Belum Verifikasi</h5>
                     <div class="row align-items-center">
                         <div class="col-lg-4">
@@ -42,7 +42,7 @@
     <div class="row">
         <div class="col-lg-4">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body gradient-card">
                     <h5 class="card-title mb-9 fw-semibold">Total Pembeli</h5>
                     <div class="row align-items-center">
                         <div class="col-lg-4">
