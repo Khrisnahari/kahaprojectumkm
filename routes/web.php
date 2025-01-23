@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KelolaUmkmController;
 use App\Http\Controllers\MidtransNotificationController;
 use App\Http\Controllers\PembeliController;
+use App\Http\Controllers\PesananController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProdukUmkmController;
 use App\Http\Controllers\ProfileController;
@@ -68,6 +69,8 @@ Route::middleware(['auth:pembeli'])->group(function () {
     Route::post('/checkout', [CheckoutController::class, 'proses'])->name('checkout.proses');
     Route::get('/checkout/{id}', [CheckoutController::class, 'checkout'])->name('checkout.index');
     Route::get('/checkout', [CheckoutController::class, 'success'])->name('checkout.success');
+    Route::get('/pesanan', [PesananController::class, 'tampilPesanan'])->name('pesanansaya');
+
 
 });
 

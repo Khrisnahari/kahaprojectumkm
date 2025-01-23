@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaksi;
 use App\Models\Umkm;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,7 +18,15 @@ class KelolaUmkmController extends Controller
         // Ambil UMKM yang terkait dengan owner tersebut
         $umkms = Umkm::where('owner_id', $ownerId)->latest()->get();
 
-        return view('kelola-umkm.index', compact('umkms'));
+        $totalPesananMasuk = Transaksi::where('status_pesanan', 'masuk')->count();
+
+        $totalPesananDiproses = Transaksi::where('status_pesanan', 'diproses')->count();
+
+        $totalPesananDikirim = Transaksi::where('status_pesanan', 'dikirim')->count();
+
+        $totalPesananSelesai = Transaksi::where('status_pesanan', 'selesai')->count();
+
+        return view('kelola-umkm.index', compact('umkms','totalPesananMasuk','totalPesananDiproses','totalPesananDikirim','totalPesananSelesai'));
     }
 
     public function create(): View

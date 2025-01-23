@@ -55,8 +55,6 @@
             // Callback untuk setiap status transaksi
             onSuccess: function (result) {
                 console.log(result);
-                alert('Pembayaran berhasil!');
-
                 // Redirect ke controller 'success' dengan parameter order_id
                 window.location.href = "{{ route('checkout.success') }}?order_id=" + result.order_id;
             },

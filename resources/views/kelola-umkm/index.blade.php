@@ -39,12 +39,50 @@
                 <div class="card">
                     <div class="card-body">
                         <h4>Status Pesanan</h4>
+                        <div class="row">
+                            <div class="col-lg-3 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center">Pesanan Masuk</h5>
+                                        <div class="mt-3"></div>
+                                        <h5 class="text-center">{{ $totalPesananMasuk }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center">Pesanan Diproses</h5>
+                                        <div class="mt-3"></div>
+                                        <h5 class="text-center">{{ $totalPesananDiproses }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center">Pesanan Dikirim</h5>
+                                        <div class="mt-3"></div>
+                                        <h5 class="text-center">{{ $totalPesananDikirim }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 mt-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="text-center">Pesanan Selesai</h5>
+                                        <div class="mt-3"></div>
+                                        <h5 class="text-center">{{ $totalPesananSelesai }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="mt-4">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-12">
                         <div class="card" onclick="window.location.href='{{route('produk.index')}}'" style="cursor: pointer;">
                             <div class="card-body">
                                 <a class="text-nowrap text-center d-block py-3 w-100">
@@ -53,20 +91,6 @@
                                 <h4 style="text-align: center">Produk</h4>
                             </div>
                         </div>                        
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 style="text-align: center">Produk</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 style="text-align: center">Produk</h4>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

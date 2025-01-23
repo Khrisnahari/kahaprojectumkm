@@ -10,8 +10,10 @@ class Transaksi extends Model
         'order_id',
         'pembeli_id', // Kolom pembeli_id menggantikan user_id
         'produk_id',
+        'quantity',
         'total',
         'status',
+        'status_pesanan',
         'snap_token'
     ];
     

@@ -2,9 +2,9 @@
 @section('title', 'Darmasaba Digital Market - Pesanan Saya')
 @section('content')
 <div class="container">  
-    <div class="card col-lg-5 col-12 mx-auto"> 
+    <div class="card col-lg-5 col-12 mx-auto" style="margin-top: 20px"> 
         <div class="card-title text-center mt-4">
-            <h4>Order Summary</h4>
+            <h4>Keranjang Saya</h4>
         </div>
         <div class="card-body">
             <div class="hr-dashed">
@@ -19,7 +19,10 @@
                     @endphp
 
                     <div class="row mt-4 align-items-center">
-                        <div class="col-3">
+                        <div>
+                            <h6 class="fw-bold">{{ $cart->produk->owner->umkm->nama_umkm }}</h6>
+                        </div>
+                        <div class="col-3 mt-2">
                             <img src="{{ asset('/storage/produk/'.$cart->produk->image) }}" class="img-fluid img-thumbnail" style="width: 100%; height: 100px;" alt="{{ $cart->produk->nama_produk }}">
                         </div>
                         <div class="col-3">
@@ -58,10 +61,9 @@
                         </div>
                     </div>
                     <hr>
-
                 @empty
                     <div class="text-center mt-4">
-                        <h6>Keranjang Anda kosong.</h6>
+                        <h6>Keranjang anda kosong.</h6>
                         <a href="{{ route('home') }}" class="btn btn-primary mt-3">Belanja Sekarang</a>
                     </div>
                 @endforelse
@@ -83,7 +85,8 @@
                             <form action="{{ route('checkout.proses') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="total" value="{{ $totalHarga }}">
-                                <input type="hidden" name="produk_id" value="{{ $carts->first()->produk_id }}"> <!-- Ambil produk_id -->
+                                <input type="hidden" name="produk_id" value="{{ $carts->first()->produk_id }}">
+                                <input type="hidden" name="quantity" value="{{ $carts->first()->quantity }}"> 
                                 <button type="submit" class="btn btn-sm btn-success w-100">Checkout</button>
                             </form>
                         </div>

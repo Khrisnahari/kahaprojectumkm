@@ -142,7 +142,7 @@
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
             <div class="offcanvas-header px-4 pb-0">
               <a class="navbar-brand" href="index.html">
-                <img src="images/logo-damart-landscape.png" class="logo">
+                <img src="images/logo-damart-landscape.png" class="img-fluid">
               </a>
               <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
             </div>
@@ -172,9 +172,16 @@
                         </li>
                         <li>
                           <a href="{{ route('cart.index') }}" class="dropdown-item">
-                            Pesanan Saya
+                            Keranjang
                             <span id="cart-badge" class="badge bg-danger text-white ms-2">{{ session('cart.totalItems', 0) }}</span>
                         </a>
+                        </li>
+                        <li>
+                          <a href="{{ route('pesanansaya') }}" class="dropdown-item">
+                            Pesanan
+                            <span id="cart-badge" class="badge bg-danger text-white ms-2"></span>
+                          </a>
+                        </li>
                         </li>
                         <li>
                             <a href="{{ route('logout') }}" class="dropdown-item text-danger"
@@ -189,7 +196,7 @@
                 @else
                     <!-- Jika pembeli belum login -->
                     <li class="nav-item">
-                        <a class="nav-link me-4 icon-box d-flex text-white" href="{{ url('login') }}">Login</a>
+                        <a class="nav-link me-4 py-2 icon-box d-flex text-white" href="{{ url('login') }}">Login</a>
                     </li>
                 @endif
               </ul>
@@ -914,10 +921,8 @@
     </div>
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
-    <script type="text/javascript" src="js/plugins.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/plugins.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/script.js')}}"></script>
   </body>
 </html>

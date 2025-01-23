@@ -162,7 +162,7 @@
         <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('images/main-logo.png') }}" class="logo">
+                    <img src="{{ asset('images/logo-damart-landscape.png') }}" class="logo" alt="Logo" style="width:200px; height:80px">
                 </a>
                 <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"
@@ -175,7 +175,7 @@
                     aria-labelledby="bdNavbarOffcanvasLabel">
                     <div class="offcanvas-header px-4 pb-0">
                         <a class="navbar-brand" href="{{ route('home') }}">
-                            <img src="{{ asset('images/logo-damart-landscape.png') }}" class="logo">
+                            <img src="{{ asset('images/logo-damart-landscape.png') }}" class="img-fluid">
                         </a>
                         <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas"
                             aria-label="Close" data-bs-target="#bdNavbar"></button>
@@ -195,11 +195,16 @@
                                             <a href="about.html" class="dropdown-item">Profile</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('cart.index') }}" class="dropdown-item">
-                                                Pesanan Saya
-                                                <span id="cart-badge"
-                                                    class="badge bg-danger text-white ms-2">{{ session('cart.totalItems', 0) }}</span>
-                                            </a>
+                                          <a href="{{ route('cart.index') }}" class="dropdown-item">
+                                            Keranjang
+                                            <span id="cart-badge" class="badge bg-danger text-white ms-2">{{ session('cart.totalItems', 0) }}</span>
+                                          </a>
+                                        </li>
+                                        <li>
+                                          <a href="{{ route('pesanansaya') }}" class="dropdown-item">
+                                            Pesanan
+                                            <span id="cart-badge" class="badge bg-danger text-white ms-2"></span>
+                                          </a>
                                         </li>
                                         <li>
                                             <a href="{{ route('logout') }}" class="dropdown-item text-danger"
@@ -215,9 +220,8 @@
                             @else
                                 <!-- Jika pembeli belum login -->
                                 <li class="nav-item">
-                                    <a class="nav-link me-4 btn btn-primary text-white"
-                                        href="{{ url('login') }}">Login</a>
-                                </li>
+                                  <a class="nav-link me-4 py-2 icon-box d-flex text-white" href="{{ url('login') }}">Login</a>
+                              </li>
                             @endif
                         </ul>
                     </div>

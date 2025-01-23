@@ -1,7 +1,7 @@
 @extends('templatemenu')
 @section('title', 'Darmasaba Digital Market - ' . ($umkmData->nama_umkm ?? 'UMKM'))
 @section('content')
-<div class="container">
+<div class="container" style="margin-top:20px">
     <div style="margin-bottom:20px">
         <a href="{{ route('home') }}" style="text-decoration: none; color: inherit;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
@@ -9,7 +9,7 @@
             </svg>
         </a>
     </div>    
-    <div class="card col-12">
+    <div class="card col-12" style="background: linear-gradient(to right, #66D9EF, #8AEF74); color: white; border: none;">
         <div class="card-detail p-4">
             <div class="row">
                 <div class="col-sm-12 col-lg-2">
@@ -48,7 +48,7 @@
             <div class="row mt-3">
                 @foreach($produks as $produk)
                     <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="card">
+                        <div class="card" style="background: linear-gradient(to right, #05458a, #29b5d8); color: white; border: none;">
                             <img src="{{ asset('/storage/produk/'.$produk->image) }}" class="img-fluid img-thumbnail" style="width: 100%; height: 300px;" alt="{{ $produk->nama_produk }}">
                             <div class="card-body">
                                 <h5 class="card-title text-capitalize">{{ $produk->nama_produk }}</h5>
@@ -114,7 +114,6 @@
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     function addToCart(productId) {
     const quantity = document.getElementById(`quantity-${productId}`).value;
@@ -136,7 +135,7 @@
                 // Tampilkan notifikasi berhasil
                 Swal.fire({
                     title: "Berhasil",
-                    text: "Produk telah ditambahkan ke Pesanan Saya!",
+                    text: "Produk telah ditambahkan ke Keranjang!",
                     icon: "success",
                 });
 
@@ -200,8 +199,4 @@ function updateCartBadge(totalItems) {
         @endforeach
     });
 </script>
-<script src="{{ asset('js/jquery-1.11.0.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap.bundle.min.js')}}"></script>
-<script src="{{ asset('js/plugins.js') }}"></script>
-<script src="{{ asset('js/script.js') }}"></script>
 @endsection
