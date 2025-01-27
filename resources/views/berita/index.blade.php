@@ -6,7 +6,7 @@
             <div class="card-body p-4">
                 <div class="row">
                     <div class="col-lg-10 col-12" style="margin-top:12px">
-                        <h5 class="card-title fw-semibold mb-4">Data Pembeli</h5>
+                        <h5 class="card-title fw-semibold mb-4">Data Berita</h5>
                     </div>
                     <hr>
                 </div>

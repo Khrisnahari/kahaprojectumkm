@@ -10,6 +10,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-damart-icon.png')}}" />
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ asset('style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
@@ -325,7 +326,7 @@
                     </div> --}}
                 </div>
                 <div class="swiper product-swiper">
-                    <div class="swiper-wrapper" style="margin-bottom: 8%">
+                    <div class="swiper-wrapper" style="margin-bottom: 8%; margin-left:1%">
                         @foreach($produks as $produk)
                             <div class="swiper-slide">
                                 <div onclick="window.location.href='{{ route('menu', $produk->owner_id) }}'" style="cursor: pointer" class="product-card position-relative">

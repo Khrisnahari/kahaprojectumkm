@@ -24,7 +24,7 @@
                                 <a href="/" class="text-nowrap text-center d-block py-3 w-100">
                                     <img src="../images/logo-damart-landscape.png" alt="" style="height: 80px;">
                                   </a>
-                                <h4 style="font-weight: bold" class="text-center">Darmasaba Digital Market</h4>
+                                {{-- <h4 style="font-weight: bold" class="text-center">Darmasaba Digital Market</h4> --}}
                                 <form method="POST" action="{{ route('proses.registrasi') }}">
                                     @csrf
                                     <div class="mt-3">
@@ -68,7 +68,7 @@
                                             @endif
                                         </div>
                                         <button type="submit"
-                                         class="btn w-100 py-8 fs-4 mb-4 rounded-2" style="background: linear-gradient(to right, #66D9EF, #8AEF74); color: white; border: none;">Masuk</button>
+                                         class="btn w-100 py-8 fs-4 mb-4 rounded-2" style="background: linear-gradient(to right, #66D9EF, #8AEF74); color: white; border: none;">Daftar</button>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <p class="fs-4 mb-0 fw-bold">Sudah Punya Akun?</p>
                                             <a class="text-primary fw-bold ms-2" href="{{ route('login') }}">Login</a>

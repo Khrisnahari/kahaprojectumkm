@@ -24,7 +24,7 @@
                 <a href="/" class="text-nowrap text-center d-block py-3 w-100">
                   <img src="../images/logo-damart-landscape.png" alt="" style="height: 80px;">
                 </a>
-                <h4 style="font-weight: bold" class="text-center">Darmasaba Digital Market</h4>
+                {{-- <h4 style="font-weight: bold" class="text-center">Darmasaba Digital Market</h4> --}}
                 <form method="POST" action="{{ route('proses.login') }}">
                   @csrf
                   <div class="mt-3">

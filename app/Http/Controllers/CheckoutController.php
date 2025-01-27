@@ -59,6 +59,16 @@ class CheckoutController extends Controller
             'status_pesanan' => 'masuk'
         ]);
 
+         // Simpan produk-produk ke tabel pivot
+        // if (!empty($data['produk'])) {
+        //     foreach ($data['produk'] as $produk) {
+        //         $transaksi->produk()->attach($produk['id'], [
+        //             'quantity' => $produk['quantity'],
+        //             'total' => $produk['quantity'] * $produk['harga']
+        //         ]);
+        //     }
+        // }
+
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.serverKey');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).

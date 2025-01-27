@@ -21,10 +21,10 @@
                     </div>
                     <div class="col-5">
                         <h6>{{ $cart->produk->nama_produk }}</h6>
-                        <p>Qty: {{ $cart->quantity }}</p>
+                        <h6>Qty: {{ $cart->quantity }}</h6>
                     </div>
                     <div class="col-4 text-end">
-                        <p>Rp {{ number_format($cart->produk->harga * $cart->quantity, 0, ',', '.') }}</p>
+                        <h6>Rp {{ number_format($cart->produk->harga * $cart->quantity, 0, ',', '.') }}</h6>
                     </div>
                 </div>
             @empty
