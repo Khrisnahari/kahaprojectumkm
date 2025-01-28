@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\ProdukUmkm;
 use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use App\Services\MidtransService;
@@ -49,48 +50,86 @@ class CheckoutController extends Controller
         $pembeli = Auth::guard('pembeli')->user();
         $orderId = 'ORDER-' . uniqid();
 
+        // Validasi input
+        $request->validate([
+            'produk' => 'required|array',
+            'produk.*.id' => 'required|exists:produk,id',
+            'produk.*.quantity' => 'required|integer|min:1',
+            'produk.*.harga' => 'required|numeric|min:0',
+        ]);
+
+        // Buat transaksi
         $transaksi = Transaksi::create([
             'order_id' => $orderId,
             'pembeli_id' => $pembeli->id,
-            'produk_id' => $data['produk_id'] ?? null,
-            'quantity' => $data['quantity'] ?? 0,
-            'total' => $data['total'] ?? 0,
+            'total' => 0, // Total dihitung setelah semua produk ditambahkan
             'status' => 'pending',
-            'status_pesanan' => 'masuk'
+            'status_pesanan' => 'masuk',
         ]);
 
-         // Simpan produk-produk ke tabel pivot
-        // if (!empty($data['produk'])) {
-        //     foreach ($data['produk'] as $produk) {
-        //         $transaksi->produk()->attach($produk['id'], [
-        //             'quantity' => $produk['quantity'],
-        //             'total' => $produk['quantity'] * $produk['harga']
-        //         ]);
-        //     }
-        // }
+        // Hitung total harga dan simpan ke pivot table
+        $totalHarga = 0;
+        foreach ($data['produk'] as $produk) {
+            $subtotal = $produk['quantity'] * $produk['harga'];
+            $totalHarga += $subtotal;
 
-        // Set your Merchant Server Key
+            // Simpan ke tabel pivot
+            $transaksi->produk()->attach($produk['id'], [
+                'quantity' => $produk['quantity'],
+                'total' => $subtotal,
+            ]);
+            
+             // Tambahkan produk ke item_details
+            $itemDetails[] = [
+                'id' => $produk['id'], // Produk ID
+                'price' => $produk['harga'], // Harga satuan
+                'quantity' => $produk['quantity'], // Jumlah
+                'name' => substr($produk['nama_produk'], 0, 50), // Nama produk (maks 50 karakter)
+            ];
+
+            $owner = ProdukUmkm::find($produk['id'])->owner; // Pastikan relasi owner ada di model Produk
+            if ($owner) {
+                $sellerDetails[] = "Seller : {$owner->umkm->nama_umkm}";
+            }
+
+            // Ubah seller details menjadi string agar lebih mudah dibaca di Midtrans
+            $sellerInfo = implode(" | ", $sellerDetails);
+        }
+
+        // Update total transaksi
+        $transaksi->update(['total' => $totalHarga]);
+
+        // Midtrans setup
         \Midtrans\Config::$serverKey = config('midtrans.serverKey');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
-        $params = array(
-            'transaction_details' => array(
+        $params = [
+            'transaction_details' => [
                 'order_id' => $orderId,
-                'gross_amount' => $data['total'],
-            ),
-        );
+                'gross_amount' => $totalHarga,
+            ],
+            'item_details' => $itemDetails,
+            'customer_details' => [
+                'first_name' => $pembeli->namalengkap,
+                'email' => $pembeli->email,
+                'phone' => $pembeli->no_telp,
+                'shipping_address' => [
+                    'first_name' => $pembeli->namalengkap,
+                    'address' => $pembeli->alamat, // Alamat pengiriman
+                    'phone' => $pembeli->no_telp,
+                ],
+            ],
+            'custom_field1' => $sellerInfo,
+        ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        
-        $transaksi->snap_token = $snapToken;
 
-        $transaksi->save();
+        // Simpan snap token ke transaksi
+        $transaksi->update(['snap_token' => $snapToken]);
 
+        // Redirect ke halaman checkout
         return redirect()->route('checkout.index', $transaksi->id);
     }
 
@@ -111,6 +150,15 @@ class CheckoutController extends Controller
         $transaksi->status = 'success';
         $transaksi->status_pesanan = 'diproses';
         $transaksi->save();
+
+        // Kurangi stok produk sesuai dengan quantity yang dibeli
+        foreach ($transaksi->produk as $produk) {
+            $produkUmkm = ProdukUmkm::find($produk->id);
+            if ($produkUmkm) {
+                $produkUmkm->stok -= $produk->pivot->quantity; // Kurangi stok berdasarkan jumlah yang dibeli
+                $produkUmkm->save();
+            }
+        }
 
         $pembeli = Auth::guard('pembeli')->user(); // Dapatkan pengguna yang sedang login
         Cart::where('pembeli_id', $pembeli->id)->delete();

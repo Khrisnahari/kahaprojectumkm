@@ -320,13 +320,16 @@
         <div class="container">
             <div class="row">
                 <div class="display-header d-flex justify-content-between pb-3">
-                    <h2 class="display-7 text-dark text-uppercase">{{ $kategori }}</h2>
-                    {{-- <div class="btn-right">
-                        <a href="shop.html" class="btn btn-medium btn-normal text-uppercase">Go to Shop</a>
-                    </div> --}}
+                    @if($kategori == 'Makanan')
+                      <h2 class="display-7 text-dark text-uppercase">Makanan & Minuman</h2>
+                      @elseif($kategori == 'Fashion')
+                      <h2 class="display-7 text-dark text-uppercase">Fashion & Akesoris</h2>
+                      @else
+                      <h2 class="display-7 text-dark text-uppercase">{{$kategori}}</h2>
+                    @endif
                 </div>
                 <div class="swiper product-swiper">
-                    <div class="swiper-wrapper" style="margin-bottom: 8%; margin-left:1%">
+                    <div class="swiper-wrapper" style="margin-left:1%">
                         @foreach($produks as $produk)
                             <div class="swiper-slide">
                                 <div onclick="window.location.href='{{ route('menu', $produk->owner_id) }}'" style="cursor: pointer" class="product-card position-relative">

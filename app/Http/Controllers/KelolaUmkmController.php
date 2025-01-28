@@ -18,13 +18,26 @@ class KelolaUmkmController extends Controller
         // Ambil UMKM yang terkait dengan owner tersebut
         $umkms = Umkm::where('owner_id', $ownerId)->latest()->get();
 
-        $totalPesananMasuk = Transaksi::where('status_pesanan', 'masuk')->count();
-
-        $totalPesananDiproses = Transaksi::where('status_pesanan', 'diproses')->count();
-
-        $totalPesananDikirim = Transaksi::where('status_pesanan', 'dikirim')->count();
-
-        $totalPesananSelesai = Transaksi::where('status_pesanan', 'selesai')->count();
+        $totalPesananMasuk = Transaksi::where('status_pesanan', 'masuk')
+        ->whereHas('produk.owner', function ($query) use ($ownerId) {
+            $query->where('id', $ownerId);
+        })->count();
+    
+        $totalPesananDiproses = Transaksi::where('status_pesanan', 'diproses')
+            ->whereHas('produk.owner', function ($query) use ($ownerId) {
+                $query->where('id', $ownerId);
+            })->count();
+        
+        $totalPesananDikirim = Transaksi::where('status_pesanan', 'dikirim')
+            ->whereHas('produk.owner', function ($query) use ($ownerId) {
+                $query->where('id', $ownerId);
+            })->count();
+        
+        $totalPesananSelesai = Transaksi::where('status_pesanan', 'selesai')
+            ->whereHas('produk.owner', function ($query) use ($ownerId) {
+                $query->where('id', $ownerId);
+            })->count();
+    
 
         return view('kelola-umkm.index', compact('umkms','totalPesananMasuk','totalPesananDiproses','totalPesananDikirim','totalPesananSelesai'));
     }

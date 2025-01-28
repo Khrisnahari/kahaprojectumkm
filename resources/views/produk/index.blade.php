@@ -19,68 +19,56 @@
                     <table class="table text-nowrap mb-0 align-middle">
                         <thead class="text-dark fs-4">
                             <tr>
-                                <th class="border-bottom-0">
-                                    <h6 style="font-weight: bold" class="mb-0">No</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 style="font-weight: bold" class="mb-0">Nama Produk</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 style="font-weight: bold" class="mb-0">Deskripsi</h6>
-                                </th>
-                                <th class="border-bottom-0">
-                                    <h6 style="font-weight: bold" class="mb-0">Harga</h6>
-                                </th>
-                                {{-- <th class="border-bottom-0">
+                                <th class="border-bottom-0"><h6 style="font-weight: bold" class="mb-0">No</h6></th>
+                                <th class="border-bottom-0"><h6 style="font-weight: bold" class="mb-0">Nama Produk</h6></th>
+                                <th class="border-bottom-0"><h6 style="font-weight: bold" class="mb-0">Deskripsi</h6></th>
+                                <th class="border-bottom-0"><h6 style="font-weight: bold" class="mb-0">Harga</h6></th>
+                                
+                                <!-- Tambahkan class 'stok-column' ke kolom stok dan sembunyikan jika kategori adalah 'Makanan' -->
+                                <th class="border-bottom-0 stok-column" style="{{ $umkm->kategori == 'Makanan' ? 'display:none;' : '' }}">
                                     <h6 style="font-weight: bold" class="mb-0">Stok</h6>
-                                </th> --}}
-                                <th class="border-bottom-0">
-                                    <h6 style="font-weight: bold" class="mb-0">Aksi</h6>
                                 </th>
+                
+                                <th class="border-bottom-0"><h6 style="font-weight: bold" class="mb-0">Aksi</h6></th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse ($produks as $produk)
                                 <tr>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">{{ $produk->nama_produk }}</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">{{ $produk->deskripsi }}</h6>
-                                    </td>
-                                    <td class="border-bottom-0">
-                                        <h6 class="fw-semibold mb-0">{{ $produk->harga }}</h6>
-                                    </td>
-                                    {{-- <td class="border-bottom-0">
+                                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $no++ }}</h6></td>
+                                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $produk->nama_produk }}</h6></td>
+                                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $produk->deskripsi }}</h6></td>
+                                    <td class="border-bottom-0"><h6 class="fw-semibold mb-0">Rp {{ number_format($produk->harga, 0, ',', '.') }}</h6></td>
+                
+                                    <!-- Tambahkan class 'stok-column' ke kolom stok dan sembunyikan jika kategori adalah 'Makanan' -->
+                                    <td class="border-bottom-0 stok-column" style="{{ $umkm->kategori == 'Makanan' ? 'display:none;' : '' }}">
                                         <h6 class="fw-semibold mb-0">{{ $produk->stok }}</h6>
-                                    </td> --}}
+                                    </td>
+                
                                     <td class="border-bottom-0">
-                                        <form id="deleteForm" action="{{ route('produk.destroy', $produk->id) }}"
-                                            method="POST">
-                                            <a href="{{ route('produk.show', $produk->id) }}"
-                                                class="btn btn-sm btn-dark">Detail</a>
-                                            <a href="{{ route('produk.edit', $produk->id) }}"
-                                                style="background-color: rgb(0, 38, 255); color: white"
-                                                class="btn btn-sm">Edit</a>
+                                        <form id="deleteForm" action="{{ route('produk.destroy', $produk->id) }}" method="POST">
+                                            <a href="{{ route('produk.show', $produk->id) }}" class="btn btn-sm btn-dark">Detail</a>
+                                            <a href="{{ route('produk.edit', $produk->id) }}" style="background-color: rgb(0, 38, 255); color: white" class="btn btn-sm">Edit</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white"
-                                                onclick="confirmDelete(event)">Delete</button>
+                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white" onclick="confirmDelete(event)">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
                             @empty
-                                <div class="alert alert-danger">
-                                    Data Produk Belum Tersedia.
-                                </div>
+                                <tr>
+                                    <td colspan="6" class="text-center">
+                                        <div class="alert alert-danger">
+                                            Data Produk Belum Tersedia.
+                                        </div>
+                                    </td>
+                                </tr>
                             @endforelse
                         </tbody>
                     </table>
                     {{ $produks->links() }}
                 </div>
+                               
             </div>
         </div>
     </div>

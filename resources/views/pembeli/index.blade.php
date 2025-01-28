@@ -18,6 +18,9 @@
                                     <h6 style="font-weight: bold" class="mb-0">No</h6>
                                 </th>
                                 <th class="border-bottom-0">
+                                    <h6 style="font-weight: bold" class="mb-0">Email</h6>
+                                </th>
+                                <th class="border-bottom-0">
                                     <h6 style="font-weight: bold" class="mb-0">Nama Pembeli</h6>
                                 </th>
                                 <th class="border-bottom-0">
@@ -36,6 +39,9 @@
                                 <tr>
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">{{ $no++ }}</h6>
+                                    </td>
+                                    <td class="border-bottom-0">
+                                        <h6 class="fw-semibold mb-0">{{ $pembeli->email }}</h6>
                                     </td>
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-0">{{ $pembeli->namalengkap }}</h6>

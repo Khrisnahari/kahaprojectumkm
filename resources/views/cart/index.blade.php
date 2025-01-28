@@ -84,9 +84,12 @@
                         <div class="col-6">
                             <form action="{{ route('checkout.proses') }}" method="POST">
                                 @csrf
-                                <input type="hidden" name="total" value="{{ $totalHarga }}">
-                                <input type="hidden" name="produk_id" value="{{ $carts->first()->produk_id }}">
-                                <input type="hidden" name="quantity" value="{{ $carts->first()->quantity }}"> 
+                                @foreach($carts as $cart)
+                                    <input type="hidden" name="produk[{{ $loop->index }}][id]" value="{{ $cart->produk_id }}">
+                                    <input type="hidden" name="produk[{{ $loop->index }}][quantity]" value="{{ $cart->quantity }}">
+                                    <input type="hidden" name="produk[{{ $loop->index }}][harga]" value="{{ $cart->produk->harga }}">
+                                    <input type="hidden" name="produk[{{ $loop->index }}][nama_produk]" value="{{ $cart->produk->nama_produk }}">
+                                @endforeach
                                 <button type="submit" class="btn btn-sm btn-success w-100">Checkout</button>
                             </form>
                         </div>

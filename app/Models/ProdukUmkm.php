@@ -30,15 +30,10 @@ class ProdukUmkm extends Model
 
     public function transaksi()
     {
-        return $this->hasMany(Transaksi::class, 'pembeli_id');
+        return $this->belongsToMany(Transaksi::class, 'transaksi_produk')
+                    ->withPivot('quantity', 'total')
+                    ->withTimestamps();
     }
-
-    // public function transaksi()
-    // {
-    //     return $this->belongsToMany(Transaksi::class, 'transaksi')
-    //                 ->withPivot('quantity', 'total')
-    //                 ->withTimestamps();
-    // }
 
     protected $table = 'produk';
 }

@@ -59,7 +59,7 @@ class ProdukUmkmController extends Controller
         $image = $request->file('image');
         $image->store('produk', 'public');
 
-        $stok = $umkm->kategori === 'Fashion' ? $request->stok : 0;
+        $stok = $umkm->kategori === 'Fashion' || $umkm->kategori === 'Skincare' || $umkm->kategori === 'Material Bangunan'  ? $request->stok : 0;
 
         ProdukUmkm::create([
             'image'             => $image->hashName(),
@@ -127,7 +127,7 @@ class ProdukUmkmController extends Controller
             ]);
         } else {
 
-            $stok = $umkm->kategori === 'Fashion' ? $request->stok : 0;
+            $stok = $umkm->kategori === 'Fashion' || $umkm->kategori === 'Skincare' || $umkm->kategori === 'Material Bangunan'  ? $request->stok : 0;
 
             $produk->update([
                 'nama_produk'       => $request->nama_produk,

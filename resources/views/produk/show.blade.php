@@ -37,7 +37,7 @@
                                 {{ $produk->harga }}
                             </div>
                         </div>
-                        @if ($umkm && $umkm->kategori === 'Fashion')
+                        @if ($umkm->kategori === 'Fashion' || $umkm->kategori === 'Skincare' || $umkm->kategori === 'Material Bangunan')
                         <div class="mt-4">
                             <h6 style="font-weight: bold">Stok</h6>
                             <div class="fs-3 fw-semibold" style="margin-top: 3px">

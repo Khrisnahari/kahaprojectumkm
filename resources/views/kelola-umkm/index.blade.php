@@ -41,7 +41,7 @@
                         <h4>Status Pesanan</h4>
                         <div class="row">
                             <div class="col-lg-3 mt-3">
-                                <div class="card">
+                                <div class="card" onclick="window.location.href='{{ route('pesanan.daftar', 'masuk') }}'" style="cursor: pointer;">
                                     <div class="card-body">
                                         <h5 class="text-center">Pesanan Masuk</h5>
                                         <div class="mt-3"></div>
@@ -50,7 +50,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 mt-3">
-                                <div class="card">
+                                <div class="card" onclick="window.location.href='{{ route('pesanan.daftar', 'diproses') }}'" style="cursor: pointer;">
                                     <div class="card-body">
                                         <h5 class="text-center">Pesanan Diproses</h5>
                                         <div class="mt-3"></div>
@@ -59,7 +59,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 mt-3">
-                                <div class="card">
+                                <div class="card" onclick="window.location.href='{{ route('pesanan.daftar', 'dikirim') }}'" style="cursor: pointer;">
                                     <div class="card-body">
                                         <h5 class="text-center">Pesanan Dikirim</h5>
                                         <div class="mt-3"></div>
@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-3 mt-3">
-                                <div class="card">
+                                <div class="card" onclick="window.location.href='{{ route('pesanan.daftar', 'selesai') }}'" style="cursor: pointer;">
                                     <div class="card-body">
                                         <h5 class="text-center">Pesanan Selesai</h5>
                                         <div class="mt-3"></div>

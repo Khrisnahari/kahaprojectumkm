@@ -63,6 +63,10 @@ Route::middleware(['auth:owner'])->group(function () {
    Route::get('/produk/{id}/edit', [ProdukUmkmController::class, 'edit'])
        ->middleware(CheckProductOwnership::class)
        ->name('produk.edit');
+
+    Route::get('/pesanan/{status}', [PesananController::class, 'daftarPesanan'])->name('pesanan.daftar');
+    Route::post('/pesanan/{id}/ubah-status', [PesananController::class, 'ubahStatus'])->name('pesanan.ubahStatus');
+
     
 });
 

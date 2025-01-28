@@ -47,29 +47,47 @@
             <hr> 
             <div class="row mt-3">
                 @foreach($produks as $produk)
-                    <div class="col-md-4 col-lg-3 mb-4">
-                        <div class="card" style="background: linear-gradient(to right, #05458a, #29b5d8); color: white; border: none;">
-                            <img src="{{ asset('/storage/produk/'.$produk->image) }}" class="img-fluid img-thumbnail" style="width: 100%; height: 300px;" alt="{{ $produk->nama_produk }}">
-                            <div class="card-body">
-                                <h5 class="card-title text-capitalize">{{ $produk->nama_produk }}</h5>
-                                <p class="card-text">Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
-                                <div class="row">
-                                    <div class="col-6">
-                                        @if (Auth::guard('pembeli')->check())
-                                            <!-- Jika pembeli sudah login -->
-                                            <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#orderModal-{{ $produk->id }}">Order</button>
+                <div class="col-md-4 col-lg-3 mb-4">
+                    <div class="card" style="background: linear-gradient(to right, #05458a, #29b5d8); color: white; border: none; 
+                    {{ (in_array($umkmData->kategori, ['Fashion', 'Skincare', 'Material Bangunan']) && $produk->stok == 0) ? 'opacity: 0.5; pointer-events: none;' : '' }}">
+                        <img src="{{ asset('/storage/produk/'.$produk->image) }}" class="img-fluid img-thumbnail" style="width: 100%; height: 300px;" alt="{{ $produk->nama_produk }}">
+                        <div class="card-body">
+                            <h5 class="card-title text-capitalize">{{ $produk->nama_produk }}</h5>
+                            <p class="card-text">Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
+                            
+                            {{-- Hanya tampilkan stok jika kategori bukan "Makanan" --}}
+                            @if($umkmData->kategori != 'Makanan')
+                                <div class="card-text" style="margin-top: -10px">{{ $produk->stok == 0 ? 'Stok Habis' : 'Stok: '.$produk->stok }}</div>
+                            @endif
+            
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    @if ($umkmData->kategori == 'Fashion' || $umkmData->kategori == 'Skincare' || $umkmData->kategori == 'Material Bangunan')
+                                        @if ($produk->stok > 0)
+                                            @if (Auth::guard('pembeli')->check())
+                                                <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#orderModal-{{ $produk->id }}">Order</button>
+                                            @else
+                                                <button class="btn btn-primary w-100" onclick="showLoginAlert()">Order</button>
+                                            @endif
                                         @else
-                                            <!-- Jika pembeli belum login -->
+                                            <button class="btn btn-secondary w-100" disabled>Habis</button>
+                                        @endif
+                                    @else
+                                        {{-- Untuk kategori makanan, tombol order selalu aktif --}}
+                                        @if (Auth::guard('pembeli')->check())
+                                            <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#orderModal-{{ $produk->id }}">Order</button>
+                                        @else
                                             <button class="btn btn-primary w-100" onclick="showLoginAlert()">Order</button>
                                         @endif
-                                    </div>
-                                    <div class="col-6">
-                                        <a href="#" class="btn btn-secondary w-100">Detail</a>
-                                    </div>
+                                    @endif
+                                </div>
+                                <div class="col-6">
+                                    <a href="#" class="btn btn-secondary w-100">Detail</a>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
                     <!-- Modal Order -->
                     <div class="modal fade" id="orderModal-{{ $produk->id }}" tabindex="-1" aria-labelledby="orderModalLabel-{{ $produk->id }}" aria-hidden="true">
@@ -85,7 +103,11 @@
                                         <!-- Jumlah Produk -->
                                         <div class="mb-3">
                                             <label for="quantity-{{ $produk->id }}" class="form-label">Jumlah</label>
-                                            <input type="number" class="form-control" id="quantity-{{ $produk->id }}" name="quantity" min="1" value="1" required>
+                                            <input type="number" class="form-control" id="quantity-{{ $produk->id }}" name="quantity" min="1" 
+                                                {{ in_array($umkmData->kategori, ['Fashion', 'Skincare', 'Material Bangunan']) ? 'max='.$produk->stok : '' }} 
+                                                value="1" required 
+                                                oninput="validateQuantity({{ $produk->id }}, {{ $produk->stok }}, '{{ $umkmData->kategori }}')">
+                                            <small id="quantityError-{{ $produk->id }}" class="text-danger" style="display: none;">Quantity melebihi stok yang ada</small>
                                         </div>
                                         <!-- Total Harga -->
                                         <div class="mb-3">
@@ -93,12 +115,12 @@
                                             <input type="text" class="form-control" id="totalPrice-{{ $produk->id }}" value="Rp {{ number_format($produk->harga, 0, ',', '.') }}" readonly>
                                         </div>
                                         <!-- Tombol Tambah Pesanan -->
-                                        <button type="submit" class="btn btn-primary w-100">Tambah Pesanan</button>
+                                        <button type="submit" id="orderButton-{{ $produk->id }}" class="btn btn-primary w-100">Tambah Pesanan</button>
                                     </form>
                                 </div>
                             </div>
                         </div>
-                    </div>                    
+                    </div>                                                                  
                 @endforeach
             </div>
         @else
@@ -198,5 +220,33 @@ function updateCartBadge(totalItems) {
         });
         @endforeach
     });
+</script>
+<script>
+    function validateQuantity(productId, maxStock, category) {
+        let quantityInput = document.getElementById(`quantity-${productId}`);
+        let orderButton = document.getElementById(`orderButton-${productId}`);
+        let errorMessage = document.getElementById(`quantityError-${productId}`);
+
+        let quantity = parseInt(quantityInput.value);
+
+        // Kategori yang memiliki batas stok
+        let kategoriDenganStok = ["Fashion", "Skincare", "Material Bangunan"];
+
+        // Jika kategori tidak termasuk dalam kategori yang memiliki stok, biarkan tanpa batasan
+        if (!kategoriDenganStok.includes(category)) {
+            errorMessage.style.display = "none";
+            orderButton.disabled = false;
+            return;
+        }
+
+        // Jika kategori memiliki batas stok, lakukan validasi
+        if (quantity > maxStock) {
+            errorMessage.style.display = "block"; // Tampilkan pesan error
+            orderButton.disabled = true; // Nonaktifkan tombol order
+        } else {
+            errorMessage.style.display = "none"; // Sembunyikan pesan error
+            orderButton.disabled = false; // Aktifkan tombol order kembali
+        }
+    }
 </script>
 @endsection

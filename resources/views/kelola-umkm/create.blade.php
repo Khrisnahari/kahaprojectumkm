@@ -24,6 +24,8 @@
                                 <option value="Pilih Kategori">Pilih Kategori</option>
                                 <option value="Fashion">Fashion</option>
                                 <option value="Makanan">Makanan</option>
+                                <option value="Skincare">Skincare</option>
+                                <option value="Material Bangunan">Material Bangunan</option>
                             </select>
                         </div>
                         <div class="mt-3">

@@ -32,7 +32,7 @@
                             <span class="text-danger">{{ $errors->first('harga') }}</span>
                         @endif
                     </div>
-                    @if ($umkm->kategori === 'Fashion')
+                    @if ($umkm->kategori === 'Fashion' || $umkm->kategori === 'Skincare' || $umkm->kategori === 'Material Bangunan')
                     <div class="mb-3">
                         <label for="stok" class="form-label">Stok</label>
                         <input type="number" class="form-control" id="stok" name="stok">

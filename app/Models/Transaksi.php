@@ -27,14 +27,8 @@ class Transaksi extends Model
 
     public function produk()
     {
-        return $this->belongsTo(ProdukUmkm::class, 'produk_id');
+        return $this->belongsToMany(ProdukUmkm::class, 'transaksi_produk', 'transaksi_id', 'produk_id')
+                    ->withPivot('quantity', 'total')
+                    ->withTimestamps();
     }
-
-    
-    // public function produk()
-    // {
-    //     return $this->belongsToMany(ProdukUmkm::class, 'transaksi')
-    //                 ->withPivot('quantity', 'total')
-    //                 ->withTimestamps();
-    // }
 }
