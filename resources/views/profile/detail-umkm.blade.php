@@ -5,14 +5,14 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-white">
                         <h6 style="font-weight: bold">Foto UMKM</h6>
                         <hr>
                         <img src="{{ asset('/storage/umkm/' . $umkm->image) }}" class="rounded" style="width: 100%">
                     </div>
                 </div>
                 <div class="card">
-                    <div class="card-body" style="margin-bottom: -30px">
+                    <div class="card-body card-white" style="margin-bottom: -30px">
                         <form action="{{ route('updateumkm', $umkm->id) }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
@@ -88,7 +88,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-white">
                         <div>
                             <h6 style="font-weight: bold">Detail UMKM</h6>
                         </div>

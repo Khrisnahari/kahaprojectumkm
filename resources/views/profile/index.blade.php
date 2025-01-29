@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="card col-lg-4">
-        <div class="card-body" style="margin-bottom: -28px">
+        <div class="card-body card-white" style="margin-bottom: -28px">
             <form action="{{ route('profile.update', $umkm->owner->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

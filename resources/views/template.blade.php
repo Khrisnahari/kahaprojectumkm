@@ -14,7 +14,7 @@
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed">
     <!-- Sidebar Start -->
-    <aside class="left-sidebar">
+    <aside class="left-sidebar" style="background: linear-gradient(to bottom, white, #90EE90, #87CEFA);">
       <!-- Sidebar scroll-->
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
@@ -47,7 +47,7 @@
             <li class="sidebar-item {{ Request::is('umkm*') ? 'active' : '' }}">
                 <a class="sidebar-link" href="{{ url('umkm') }}" aria-expanded="false">
                     <span>
-                        <i class="ti ti-list"></i>
+                        <i class="ti ti-building-store"></i>
                     </span>
                     <span class="hide-menu">Data UMKM</span>
                 </a>
@@ -55,7 +55,7 @@
             <li class="sidebar-item {{ Request::is('pembeli*') ? 'active' : '' }}">
               <a class="sidebar-link" href="{{ url('pembeli') }}" aria-expanded="false">
                   <span>
-                      <i class="ti ti-list"></i>
+                      <i class="ti ti-user"></i>
                   </span>
                   <span class="hide-menu">Data Pembeli</span>
               </a>
@@ -63,7 +63,7 @@
           <li class="sidebar-item {{ Request::is('berita*') ? 'active' : '' }}">
             <a class="sidebar-link" href="{{ url('berita') }}" aria-expanded="false">
                 <span>
-                    <i class="ti ti-list"></i>
+                    <i class="ti ti-message-report"></i>
                 </span>
                 <span class="hide-menu">Konten Berita</span>
             </a>

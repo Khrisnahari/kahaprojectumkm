@@ -16948,3 +16948,21 @@ ul {
 .gradient-card h4 {
     color: white; /* Warna teks tetap putih */
 }
+
+.left-sidebar {
+    background: linear-gradient(to bottom, white, #90EE90, #87CEFA);
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-custom{
+    background:linear-gradient(to right,#6ec1e4,#78e4b0);border-radius:15px;padding:20px;text-align:center;color:#fff;font-family:Arial,sans-serif;font-weight:bold;box-shadow:5px 5px 15px rgba(0,0,0,0.2);transition:all .3s ease-in-out}.card-custom:hover{box-shadow:8px 8px 20px rgba(0,0,0,0.3);transform:translateY(-3px)}
+
+.card-blue{
+    background:#0000FF;border-radius:15px;padding:20px;text-align:center;color:#fff;font-family:Arial,sans-serif;font-weight:bold;box-shadow:5px 5px 15px rgba(0,0,0,0.2);transition:all .3s ease-in-out
+}
+
+.card-blue:hover{
+    box-shadow:8px 8px 20px rgba(0,0,0,0.3);transform:translateY(-3px)}.card-blue img{filter:brightness(0) invert(1);}.card-blue h3,.card-blue p{color:#fff;
+}
+
+.card-white{background:#fff;border:2px solid #0000FF;border-radius:15px;padding:20px;text-align:left;color:#000;font-family:Arial,sans-serif;font-weight:bold;box-shadow:5px 5px 15px rgba(0,0,0,0.1);transition:all .3s ease-in-out}.card-white:hover{box-shadow:8px 8px 20px rgba(0,0,0,0.2);transform:translateY(-3px)}.card-white img{filter:none;}.card-white h3{color:#000;}
