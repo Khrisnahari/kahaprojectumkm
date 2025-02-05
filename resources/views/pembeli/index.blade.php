@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex align-items-stretch">
         <div class="card w-100">
-            <div class="card-body p-4">
+            <div class="card-body card-white p-4">
                 <div class="row">
                     <div class="col-lg-10 col-12" style="margin-top:12px">
                         <h5 class="card-title fw-semibold mb-4">Data Pembeli</h5>
@@ -53,12 +53,10 @@
                                         <h6 class="fw-semibold mb-0">{{ $pembeli->alamat }}</h6>
                                     </td>
                                     <td class="border-bottom-0">
-                                        <form id="deleteForm" action="{{ route('pembeli.destroy', $pembeli->id) }}"
-                                            method="POST">
+                                        <form id="deleteForm" action="{{ route('pembeli.destroy', $pembeli->id) }}" method="POST" onsubmit="return confirmDelete(event, this)">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white"
-                                                onclick="confirmDelete(event)">Delete</button>
+                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -76,10 +74,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function confirmDelete(event) {
-            event.preventDefault(); // Mencegah form untuk submit langsung
-
-            // Menggunakan SweetAlert untuk konfirmasi
+        function confirmDelete(event, formElement) {
+            event.preventDefault(); // Mencegah submit otomatis
+    
             Swal.fire({
                 title: 'Apakah Anda Yakin?',
                 text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -90,8 +87,7 @@
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Jika diklik 'Hapus', kirimkan form
-                    document.getElementById('deleteForm').submit();
+                    formElement.submit(); // Submit form yang sesuai
                 }
             });
         }

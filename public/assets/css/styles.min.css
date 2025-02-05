@@ -16966,3 +16966,13 @@ ul {
 }
 
 .card-white{background:#fff;border:2px solid #0000FF;border-radius:15px;padding:20px;text-align:left;color:#000;font-family:Arial,sans-serif;font-weight:bold;box-shadow:5px 5px 15px rgba(0,0,0,0.1);transition:all .3s ease-in-out}.card-white:hover{box-shadow:8px 8px 20px rgba(0,0,0,0.2);transform:translateY(-3px)}.card-white img{filter:none;}.card-white h3{color:#000;}
+
+th, td {
+    white-space: normal;  /* Mengizinkan teks untuk wrap */
+    word-wrap: break-word; /* Memastikan kata panjang terpotong */
+    max-width: 250px; /* Sesuaikan dengan lebar yang diinginkan */
+}
+
+.hr-dashed {
+    border-top: 2px dashed black;
+  }

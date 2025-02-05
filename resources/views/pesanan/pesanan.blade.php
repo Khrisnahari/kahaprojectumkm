@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container">
-    <div class="card col-lg-6 mx-auto">
+    <div class="card card-white col-lg-6 mx-auto">
         <div class="card-body">
             <h5 class="text-center">Pesanan Saya</h5>
             <div class="hr-dashed mt-3"></div>
@@ -53,13 +53,13 @@
                     @endforeach
                 @endforeach
                 <div class="text-center">
-                    <a href="{{ route('home') }}" class="btn btn-primary mt-3">Kembali</a>
+                    <a href="{{ route('home') }}" class="btn btn-primary mt-3 w-100">Kembali</a>
                 </div>
             @else
                 {{-- Jika tidak ada transaksi --}}
                 <div class="text-center mt-3">
                     <h5>Belum ada pesanan.</h5>
-                    <a href="{{ route('home') }}" class="btn btn-primary w-100 mt-3">Belanja Sekarang</a>
+                    <a href="{{ route('home') }}#mobile-products" class="btn btn-primary w-100 mt-3">Belanja Sekarang</a>
                 </div>
             @endif
         </div>

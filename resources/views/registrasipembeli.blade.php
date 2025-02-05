@@ -30,7 +30,7 @@
                                     <div class="mt-3">
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="namalengkap" name="namalengkap" placeholder="Masukkan nama lengkap di sini">
+                                            <input type="text" class="form-control" id="namalengkap" name="namalengkap" placeholder="Masukkan Nama Lengkap di sini">
                                             @if ($errors->has('namalengkap'))
                                                 <span class="text-danger">{{ $errors->first('namalengkap') }}</span>
                                             @endif
@@ -62,7 +62,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="exampleInputEmail1" class="form-label">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Nomor Telepon di sini">
+                                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat  di sini">
                                             @if ($errors->has('alamat'))
                                                 <span class="text-danger">{{ $errors->first('alamat') }}</span>
                                             @endif

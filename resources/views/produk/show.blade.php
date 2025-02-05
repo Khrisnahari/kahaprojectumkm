@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-white">
                         <h6 style="font-weight: bold">Foto Produk</h6>
                         <hr>
                         <img src="{{ asset('/storage/produk/' . $produk->image) }}" class="rounded" style="width: 100%">
@@ -14,7 +14,7 @@
             </div>
             <div class="col-md-4">
                 <div class="card">
-                    <div class="card-body">
+                    <div class="card-body card-white">
                         <div>
                             <h6 style="font-weight: bold">Detail Produk</h6>
                         </div>

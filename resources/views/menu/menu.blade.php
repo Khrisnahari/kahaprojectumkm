@@ -3,7 +3,7 @@
 @section('content')
 <div class="container" style="margin-top:20px">
     <div style="margin-bottom:20px">
-        <a href="{{ route('home') }}" style="text-decoration: none; color: inherit;">
+        <a href="{{ route('home') }}#mobile-products" style="text-decoration: none; color: inherit;">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M15 8a.5.5 0 0 1-.5.5H3.707l3.147 3.146a.5.5 0 0 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L3.707 7.5H14.5A.5.5 0 0 1 15 8z"/>
             </svg>
@@ -82,7 +82,7 @@
                                     @endif
                                 </div>
                                 <div class="col-6">
-                                    <a href="#" class="btn btn-secondary w-100">Detail</a>
+                                    <button class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#detailModal-{{ $produk->id }}">Detail</button>
                                 </div>
                             </div>
                         </div>
@@ -120,7 +120,43 @@
                                 </div>
                             </div>
                         </div>
-                    </div>                                                                  
+                    </div> 
+                    <!-- Modal Detail Produk --> 
+                    <div class="modal fade" id="detailModal-{{ $produk->id }}" tabindex="-1" aria-labelledby="detailModalLabel-{{ $produk->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-capitalize" id="detailModalLabel-{{ $produk->id }}">{{ $produk->nama_produk }}</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <img src="{{ asset('/storage/produk/'.$produk->image) }}" class="img-fluid rounded" alt="{{ $produk->nama_produk }}">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h6>{{ $produk->nama_produk }}</h6>
+                                            <h6>{{ $produk->deskripsi }}</h6>
+                                            <h6 class="fw-bold">Rp {{ number_format($produk->harga, 0, ',', '.') }}</h6>
+                                            @if($umkmData->kategori != 'Makanan')
+                                                <p><strong>Stok:</strong> {{ $produk->stok == 0 ? 'Stok Habis' : $produk->stok }}</p>
+                                            @endif                    
+                                            <div class="mt-3">
+                                                @if (Auth::guard('pembeli')->check())
+                                                    <button class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#orderModal-{{ $produk->id }}">Order Sekarang</button>
+                                                @else
+                                                    <button class="btn btn-primary w-100" onclick="showLoginAlert()">Order Sekarang</button>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                                       
                 @endforeach
             </div>
         @else

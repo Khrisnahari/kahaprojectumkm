@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <a href="{{ route('berita.index') }}#latest-blog" class="btn btn-light mb-4">← Kembali</a>
+    <a href="{{ route('home') }}#latest-blog" class="btn btn-light mb-4">← Kembali</a>
 
     <h1>{{ $berita->judul }}</h1>
     <p class="text-muted">

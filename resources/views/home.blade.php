@@ -132,7 +132,7 @@
     <header id="header" class="site-header header-scrolled position-fixed text-black bg-light">
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html">
+          <a class="navbar-brand" href="/">
             <img src="images/logo-damart-landscape.png" class="logo" alt="Logo" style="height: 80px">
         </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -169,7 +169,7 @@
                     </a>        
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="about.html" class="dropdown-item">Profile</a>
+                            <a href="{{route('profilepembeli')}}" class="dropdown-item">Profile</a>
                         </li>
                         <li>
                           <a href="{{ route('cart.index') }}" class="dropdown-item">
@@ -206,45 +206,42 @@
         </div>
       </nav>
     </header>
-    <section id="billboard" class="position-relative overflow-hidden bg-light-blue">
-      <div class="swiper main-swiper">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <div class="container">
-              <div class="row d-flex align-items-center">
-                <div class="col-md-6">
-                  <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">Your Products Are Great.</h1>
-                    <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <div class="image-holder">
-                    <img src="images/banner-image.png" alt="banner">
-                  </div>
-                </div>
-              </div>
+    {{-- <section id="welcome-banner" class="position-relative overflow-hidden bg-light-blue">
+      <div class="container">
+        <div class="row d-flex align-items-center">
+          <!-- Bagian Teks -->
+          <div class="col-md-6">
+            <div class="banner-content">
+              <h1 class="display-2 text-uppercase text-dark pb-4">Welcome to D'DAMART</h1>
+              <p class="lead text-dark">DARMASABA DIGITAL MARKET</p>
+              <p class="lead text-dark">Empowering UMKM in Darmasaba with digital transformation.</p>
+              <a href="login" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Explore Now</a>
             </div>
           </div>
-          <div class="swiper-slide">
-            <div class="container">
-              <div class="row d-flex flex-wrap align-items-center">
-                <div class="col-md-6">
-                  <div class="banner-content">
-                    <h1 class="display-2 text-uppercase text-dark pb-5">Technology Hack You Won't Get</h1>
-                    <a href="shop.html" class="btn btn-medium btn-dark text-uppercase btn-rounded-none">Shop Product</a>
-                  </div>
-                </div>
-                <div class="col-md-5">
-                  <div class="image-holder">
-                    <img src="images/banner-image.png" alt="banner">
-                  </div>
-                </div>
-              </div>
+          <!-- Bagian Gambar -->
+          <div class="col-md-6">
+            <div class="image-holder">
+              <img src="images/test.png" alt="Welcome Banner" class="img-fluid">
             </div>
           </div>
         </div>
       </div>
+    </section>
+    
+ --}}
+
+
+    <section id="billboard" class="position-relative overflow-hidden bg-light-blue">
+      <div class="swiper main-swiper">
+        <div class="swiper-wrapper">
+          <!-- Slide 1 -->
+          <div class="swiper-slide" style="background: url('images/banner-new.jpg') center/cover no-repeat; height: 100vh; position: relative;"></div>
+          <!-- Slide 2 -->
+          <div class="swiper-slide" style="background: url('images/banner-image.png') center/cover no-repeat; height: 100vh; position: relative;"></div>
+        </div>
+      </div>
+
+      <!-- Navigation Arrows -->
       <div class="swiper-icon swiper-arrow swiper-arrow-prev">
         <svg class="chevron-left">
           <use xlink:href="#chevron-left" />
@@ -256,6 +253,7 @@
         </svg>
       </div>
     </section>
+
     <section id="company-services" class="padding-large" style="background-color: #d4f1f9;">
       <div class="container">
           <div class="row">
@@ -470,7 +468,7 @@
           <div class="text-content offset-4 padding-medium">
             <h3>10% off</h3>
             <h2 class="display-2 pb-5 text-uppercase text-dark">New year sale</h2>
-            <a href="shop.html" class="btn btn-medium btn-primary text-uppercase btn-rounded-none">Shop Sale</a>
+            <a href="#mobile-products" class="btn btn-medium btn-primary text-uppercase btn-rounded-none">Shop Sale</a>
           </div>
         </div>
         <div class="col-md-6 col-sm-12">
@@ -485,7 +483,7 @@
           <div class="display-header d-flex justify-content-between pb-3">
             <h2 class="display-7 text-dark text-uppercase">Darmasaba News</h2>
             <div class="btn-right">
-              <a href="blog.html" class="btn btn-medium btn-normal text-uppercase">Read Blog</a>
+              <a href="{{route('daftarberita')}}" class="btn btn-medium btn-normal text-uppercase">Read Blog</a>
             </div>
           </div>
           <div class="container mt-4">
@@ -499,7 +497,7 @@
                         </div>
                         <div class="card-body">
                           <h3 class="card-title">
-                            <a href="{{ route('berita.show', $beritas[0]->id) }}" class="text-decoration-none text-dark">{{ $beritas[0]->judul }}</a>
+                            <a href="{{ route('berita.showBerita', $beritas[0]->id) }}" class="text-decoration-none text-dark">{{ $beritas[0]->judul }}</a>
                         </h3>                        
                             <p class="text-muted">
                                 {{ \Carbon\Carbon::parse($beritas[0]->created_at)->format('d M Y') }}
@@ -520,7 +518,7 @@
                         </div>
                         <div>
                           <h6 class="mb-1">
-                            <a href="{{ route('berita.show', $beritas->id) }}" class="text-decoration-none text-dark">{{ $beritas->judul }}</a>
+                            <a href="{{ route('berita.showBerita', $beritas->id) }}" class="text-decoration-none text-dark">{{ $beritas->judul }}</a>
                           </h6>
                             <p class="text-muted mb-0">
                                 {{ \Carbon\Carbon::parse($beritas->created_at)->format('d M Y') }} • {{ $beritas->halaman }}
@@ -597,7 +595,7 @@
         </div>
       </div>
     </section> --}}
-    <section id="testimonials" class="position-relative">
+    {{-- <section id="testimonials" class="position-relative">
       <div class="container">
         <div class="row">
           <div class="review-content position-relative">
@@ -698,18 +696,18 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> --}}
     <section id="instagram" class="padding-large overflow-hidden no-padding-top">
-      <div class="container">
+      <div class="container mt-5">
         <div class="row">
           <div class="display-header text-uppercase text-dark text-center pb-3">
-            <h2 class="display-7">Shop Our Insta</h2>
+            <h2 class="display-7">Kunjungi Instagram UMKM</h2>
           </div>
           <div class="d-flex flex-wrap">
           <!-- Instagram Item -->
           <figure class="instagram-item pe-2">
             <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
-                <img src="images/insta-item1.jpg" alt="instagram" class="insta-image">
+                <img src="images/postack.png" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
                     <svg class="instagram">
                         <use xlink:href="#instagram"></use>
@@ -727,11 +725,135 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <img src="images/insta-item1.jpg" alt="instagram post" class="img-fluid">
+                        <img src="images/postack.png" alt="instagram post" class="img-fluid">
                         <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="https://www.instagram.com/jegegbagusdarmasaba?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                        <a href="https://www.instagram.com/ackfriedchickenofficial?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                          class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Instagram Item -->
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
+                <img src="images/urbanhpws.png" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                    <svg class="instagram">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </div>
+            </a>
+          </figure>
+
+          <!-- Modal -->
+          <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instagramModalLabel">Instagram Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/urbanhpws.png" alt="instagram post" class="img-fluid">
+                        <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="https://www.instagram.com/urbanhpws?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                          class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Instagram Item -->
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
+                <img src="images/yuma.png" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                    <svg class="instagram">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </div>
+            </a>
+          </figure>
+
+          <!-- Modal -->
+          <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instagramModalLabel">Instagram Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/yuma.png" alt="instagram post" class="img-fluid">
+                        <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="https://www.instagram.com/yuma.alpaka?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                          class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Instagram Item -->
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
+                <img src="images/cantika.png" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                    <svg class="instagram">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </div>
+            </a>
+          </figure>
+
+          <!-- Modal -->
+          <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instagramModalLabel">Instagram Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/cantika.png" alt="instagram post" class="img-fluid">
+                        <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="https://www.instagram.com/cantika_collectionbeauty?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" 
+                          class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <!-- Instagram Item -->
+          <figure class="instagram-item pe-2">
+            <a href="#" class="image-link position-relative" data-bs-toggle="modal" data-bs-target="#instagramModal">
+                <img src="images/genyolbuyeyen.png" alt="instagram" class="insta-image">
+                <div class="icon-overlay position-absolute d-flex justify-content-center">
+                    <svg class="instagram">
+                        <use xlink:href="#instagram"></use>
+                    </svg>
+                </div>
+            </a>
+          </figure>
+
+          <!-- Modal -->
+          <div class="modal fade" id="instagramModal" tabindex="-1" aria-labelledby="instagramModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="instagramModalLabel">Instagram Post</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="images/genyolbuyeyen.png" alt="instagram post" class="img-fluid">
+                        <p class="mt-2">Lihat lebih banyak di akun Instagram kami!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="https://www.instagram.com/begenyolbukyeyen?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="" 
                           class="btn btn-primary" target="_blank">Kunjungi Instagram</a>
                     </div>
                 </div>
@@ -739,7 +861,7 @@
           </div>
 
 
-            <figure class="instagram-item pe-2">
+            {{-- <figure class="instagram-item pe-2">
               <a href="https://templatesjungle.com/" class="image-link position-relative">
                 <img src="images/insta-item2.jpg" alt="instagram" class="insta-image">
                 <div class="icon-overlay position-absolute d-flex justify-content-center">
@@ -778,7 +900,7 @@
                   </svg>
                 </div>
               </a>
-            </figure>
+            </figure> --}}
           </div>
         </div>
       </div>
@@ -790,8 +912,10 @@
             <div class="row d-flex flex-wrap justify-content-between">
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu">
-                  <img src="images/main-logo.png" alt="logo">
-                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio erat nullam fringilla.</p>
+                  <img src="images/logo-damart-landscape.png" alt="logo" class="logo" style="height: 80px">
+                  <div style="margin-top: 5px">
+                    <p>D'DAMAR adalah simbol transformasi digital bagi UMKM, membawa mereka ke era perdagangan modern yang lebih luas, mudah diakses, dan berdaya saing tinggi.</p>
+                  </div>
                   <div class="social-links">
                     <ul class="d-flex list-unstyled">
                       <li>
@@ -880,9 +1004,9 @@
               <div class="col-lg-3 col-sm-6 pb-3">
                 <div class="footer-menu contact-item">
                   <h5 class="widget-title text-uppercase pb-2">Contact Us</h5>
-                  <p>Do you have any queries or suggestions? <a href="mailto:">yourinfo@gmail.com</a>
+                  <p>Do you have any queries or suggestions? <a href="mailto:">kadekkhrisna7@gmail.com</a>
                   </p>
-                  <p>If you need support? Just give us a call. <a href="">+55 111 222 333 44</a>
+                  <p>If you need support? Just give us a call. <a href="">+62 8123 8667 261</a>
                   </p>
                 </div>
               </div>
@@ -899,8 +1023,7 @@
             <div class="Shipping d-flex">
               <p>We ship with:</p>
               <div class="card-wrap ps-2">
-                <img src="images/dhl.png" alt="visa">
-                <img src="images/shippingcard.png" alt="mastercard">
+                <img src="images/watermark-desa.png" alt="logo" class="logo" style="height: 80px">
               </div>
             </div>
           </div>
@@ -908,15 +1031,13 @@
             <div class="payment-method d-flex">
               <p>Payment options:</p>
               <div class="card-wrap ps-2">
-                <img src="images/visa.jpg" alt="visa">
-                <img src="images/mastercard.jpg" alt="mastercard">
-                <img src="images/paypal.jpg" alt="paypal">
+                <img src="images/midtrans.png" alt="midtrans" style="width: 50%">
               </div>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">
             <div class="copyright">
-              <p>© Copyright 2023 MiniStore. Design by <a href="https://templatesjungle.com/">TemplatesJungle</a> Distribution by <a href="https://themewagon.com">ThemeWagon</a>
+              <p>© Copyright 2024 Darmasaba Digital Market. Design by <a>I Kadek Khrisna Hari Senjaya</a> Distribution by <a>Senja Group</a>
               </p>
             </div>
           </div>

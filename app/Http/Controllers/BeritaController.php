@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class BeritaController extends Controller
 {
@@ -131,7 +132,22 @@ class BeritaController extends Controller
         return view('berita.show', compact('berita'));
     }
 
+    public function showBerita($id)
+    {
+        $berita = Berita::findOrFail($id); // Ambil berita berdasarkan ID, jika tidak ditemukan akan error 404
+
+        // Increment jumlah pembaca
+        $berita->increment('views');
+
+        return view('berita.showBerita', compact('berita'));
+    }
 
 
-    
+    public function daftarBerita() : View {
+         // Ambil semua berita dari database
+         $beritas = Berita::latest()->paginate(10);
+
+         // Kirim ke view
+         return view('berita.daftar-berita', compact('beritas'));
+    }
 }

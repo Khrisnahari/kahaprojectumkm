@@ -2,7 +2,7 @@
 @section('title', 'Pasar Digital Darmasaba - Tambah UMKM')
 @section('content')
     <div class="card  col-lg-5">
-        <div class="card-body">
+        <div class="card-body card-white">
             <form action="{{ route('kelolaumkm.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div>
@@ -12,7 +12,7 @@
                 <div class="mt-3">
                     <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Nama UMKM</label>
-                        <input type="nama_umkm" class="form-control" id="nama_umkm" name="nama_umkm">
+                        <input type="nama_umkm" class="form-control" id="nama_umkm" name="nama_umkm" placeholder="Masukkan Nama UMKM di sini">
                         @if ($errors->has('nama_umkm'))
                             <span class="text-danger">{{ $errors->first('nama_umkm') }}</span>
                         @endif
@@ -22,8 +22,8 @@
                             <label for="exampleInputEmail1" class="form-label">Kategori UMKM</label>
                             <select name="kategori" class="form-select">
                                 <option value="Pilih Kategori">Pilih Kategori</option>
-                                <option value="Fashion">Fashion</option>
-                                <option value="Makanan">Makanan</option>
+                                <option value="Fashion">Fashion & Aksesoris</option>
+                                <option value="Makanan">Makanan & Minuman</option>
                                 <option value="Skincare">Skincare</option>
                                 <option value="Material Bangunan">Material Bangunan</option>
                             </select>
@@ -31,7 +31,7 @@
                         <div class="mt-3">
                             <div class="mb-3">
                                 <label for="exampleInputEmail1" class="form-label">Alamat</label>
-                                <input type="alamat" class="form-control" id="alamat" name="alamat">
+                                <input type="alamat" class="form-control" id="alamat" name="alamat" placeholder="Masukkan Alamat di sini">
                                 @if ($errors->has('alamat'))
                                     <span class="text-danger">{{ $errors->first('alamat') }}</span>
                                 @endif
@@ -39,7 +39,7 @@
                             <div class="mt-3">
                                 <div class="mb-3">
                                     <label for="deskripsi_umkm" class="form-label">Tentang UMKM</label>
-                                    <textarea class="form-control" id="deskripsi_umkm" name="deskripsi_umkm" rows="4"></textarea>
+                                    <textarea class="form-control" id="deskripsi_umkm" name="deskripsi_umkm" rows="4" placeholder="Masukkan Deskripsi UMKM di sini"></textarea>
                                     @if ($errors->has('deskripsi_umkm'))
                                         <span class="text-danger">{{ $errors->first('deskripsi_umkm') }}</span>
                                     @endif
@@ -79,7 +79,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-lg-6">
-                                        <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Simpan</button>
+                                        <button type="submit" class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">Daftar</button>
                                     </div>
                                     <div class="col-lg-6">
                                         <a href="{{ route('kelolaumkm.index') }}" class="btn btn-sm btn-dark py-8 w-100 rounded-2 fs-4">Kembali</a>

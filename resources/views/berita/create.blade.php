@@ -2,12 +2,12 @@
 @section('title', 'Pasar Digital Darmasaba - Tambah Tulisan')
 @section('content')
     <div class="card col-lg-8 mx-auto mt-4">
-        <div class="card-body">
+        <div class="card-body card-white">
             <form action="{{ route('berita.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <!-- Header -->
                 <div>
-                    <h5 class="text-center">Tambah Tulisan</h5>
+                    <h5 class="text-center fw-semibold">Tambah Konten Berita</h5>
                 </div>
                 <hr>
                 

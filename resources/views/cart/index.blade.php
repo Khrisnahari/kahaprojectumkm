@@ -2,7 +2,7 @@
 @section('title', 'Darmasaba Digital Market - Pesanan Saya')
 @section('content')
 <div class="container">  
-    <div class="card col-lg-5 col-12 mx-auto" style="margin-top: 20px"> 
+    <div class="card card-white col-lg-5 col-12 mx-auto" style="margin-top: 20px"> 
         <div class="card-title text-center mt-4">
             <h4>Keranjang Saya</h4>
         </div>
@@ -64,7 +64,8 @@
                 @empty
                     <div class="text-center mt-4">
                         <h6>Keranjang anda kosong.</h6>
-                        <a href="{{ route('home') }}" class="btn btn-primary mt-3">Belanja Sekarang</a>
+                        <div class="hr-dashed mt-3"></div>
+                        <a href="{{ route('home') }}#mobile-products" class="btn btn-primary mt-3 w-100">Belanja Sekarang</a>
                     </div>
                 @endforelse
 
@@ -94,7 +95,7 @@
                             </form>
                         </div>
                         <div class="col-6">
-                            <a href="{{ route('home') }}" class="btn btn-sm btn-primary w-100"><i class="bi bi-plus"></i> Tambah Item</a>
+                            <a href="{{ route('home') }}#mobile-products" class="btn btn-sm btn-primary w-100"><i class="bi bi-plus"></i> Tambah Item</a>
                         </div>
                     </div>
                 @endif

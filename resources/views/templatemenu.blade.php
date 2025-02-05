@@ -193,7 +193,7 @@
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
-                                            <a href="about.html" class="dropdown-item">Profile</a>
+                                            <a href="{{route('profilepembeli')}}" class="dropdown-item">Profile</a>
                                         </li>
                                         <li>
                                           <a href="{{ route('cart.index') }}" class="dropdown-item">

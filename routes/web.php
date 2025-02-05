@@ -14,6 +14,7 @@ use App\Http\Controllers\ProdukUmkmController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UmkmController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\ProfilePembeliController;
 use App\Http\Middleware\CheckProductOwnership;
 use Illuminate\Support\Facades\Route;
 
@@ -39,6 +40,7 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::resource('/umkm', UmkmController::class);
     Route::resource('/pembeli', PembeliController::class);
     Route::get('/berita', [BeritaController::class, 'index'])->name('berita.index');
+    Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
     Route::get('/berita/create', [BeritaController::class, 'create'])->name('berita.create');
     Route::post('/berita', [BeritaController::class, 'store'])->name('berita.store');
     Route::delete('/berita/{id}', [BeritaController::class, 'destroy'])->name('berita.destroy');
@@ -80,7 +82,8 @@ Route::middleware(['auth:pembeli'])->group(function () {
     Route::get('/checkout/{id}', [CheckoutController::class, 'checkout'])->name('checkout.index');
     Route::get('/checkout', [CheckoutController::class, 'success'])->name('checkout.success');
     Route::get('/pesanan', [PesananController::class, 'tampilPesanan'])->name('pesanansaya');
-
+    Route::get('/profile-pembeli', [ProfilePembeliController::class, 'index'])->name('profilepembeli');
+    Route::put('/profile-pembeli/update/{id}', [ProfilePembeliController::class, 'update'])->name('profile.pembeli.update');
 
 });
 
@@ -90,4 +93,5 @@ Route::post('/umkm/{id}/verifikasi', [UmkmController::class, 'verifikasi'])->nam
 // Frontend DAMAR
 Route::get('home',   [HomeController::class, 'home'])->name('home');
 Route::get('/menu/{owner_id}', [HomeController::class, 'menu'])->name('menu');
-Route::get('/berita/{id}', [BeritaController::class, 'show'])->name('berita.show');
+Route::get('/showberita/{id}', [BeritaController::class, 'showBerita'])->name('berita.showBerita');
+Route::get('/daftar-berita', [BeritaController::class, 'daftarBerita'])->name('daftarberita');

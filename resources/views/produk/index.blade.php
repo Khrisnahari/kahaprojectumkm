@@ -3,7 +3,7 @@
 @section('content')
     <div class="d-flex align-items-stretch">
         <div class="card w-100">
-            <div class="card-body p-4">
+            <div class="card-body card-white p-4">
                 <div class="row">
                     <div class="col-lg-10 col-12" style="margin-top:12px">
                         <h5 class="card-title fw-semibold mb-4">Data Produk</h5>
@@ -46,14 +46,14 @@
                                     </td>
                 
                                     <td class="border-bottom-0">
-                                        <form id="deleteForm" action="{{ route('produk.destroy', $produk->id) }}" method="POST">
+                                        <form action="{{ route('produk.destroy', $produk->id) }}" method="POST" onsubmit="return confirmDelete(event, this)">
                                             <a href="{{ route('produk.show', $produk->id) }}" class="btn btn-sm btn-dark">Detail</a>
                                             <a href="{{ route('produk.edit', $produk->id) }}" style="background-color: rgb(0, 38, 255); color: white" class="btn btn-sm">Edit</a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white" onclick="confirmDelete(event)">Delete</button>
+                                            <button type="submit" class="btn btn-sm bg-status-danger" style="color: white">Delete</button>
                                         </form>
-                                    </td>
+                                    </td>                                    
                                 </tr>
                             @empty
                                 <tr>
@@ -74,10 +74,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
-        function confirmDelete(event) {
-            event.preventDefault(); // Mencegah form untuk submit langsung
-
-            // Menggunakan SweetAlert untuk konfirmasi
+        function confirmDelete(event, formElement) {
+            event.preventDefault(); // Mencegah submit otomatis
+    
             Swal.fire({
                 title: 'Apakah Anda Yakin?',
                 text: "Data yang dihapus tidak dapat dikembalikan!",
@@ -88,12 +87,11 @@
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    // Jika diklik 'Hapus', kirimkan form
-                    document.getElementById('deleteForm').submit();
+                    formElement.submit(); // Submit form yang sesuai
                 }
             });
         }
-    </script>
+    </script>    
     <script>
         //message with sweetalert
         @if (session('success'))

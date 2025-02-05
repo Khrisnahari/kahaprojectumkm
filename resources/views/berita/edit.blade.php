@@ -2,12 +2,14 @@
 @section('title', 'Edit Berita')
 @section('content')
     <div class="card col-lg-8 mx-auto mt-4">
-        <div class="card-body">
+        <div class="card-body card-white">
             <form action="{{ route('berita.update', $berita->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
-                <h5 class="text-center">Edit Berita</h5>
+                <div class="col-lg-10 col-12" style="margin-top:12px">
+                    <h4 class="card-title fw-semibold mb-4">Edit Berita</h4>
+                </div>
                 <hr>
 
                 <!-- Halaman -->

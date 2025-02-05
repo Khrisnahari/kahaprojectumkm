@@ -20451,3 +20451,50 @@ ul {
 .timeline-widget .timeline-item .timeline-badge.badge-primary {
     border: 2px solid #5D87FF
 }
+
+#welcome-banner {
+  background: url('images/your-landscape-image.jpg') no-repeat center center;
+  background-size: cover;
+  height: 100vh; /* Mengisi seluruh layar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  padding: 50px 0;
+  position: relative;
+}
+
+.banner-content {
+  background: rgba(0, 0, 0, 0.5); /* Efek transparan agar teks lebih terbaca */
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.banner-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.banner-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+.btn-medium {
+  padding: 12px 24px;
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #222;
+  border: none;
+}
+
+.btn-light:hover {
+  background-color: #f8f9fa;
+  color: #000;
+}

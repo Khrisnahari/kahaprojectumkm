@@ -2,13 +2,13 @@
 @section('title', 'Pasar Digital Darmasaba - Edit Produk')
 @section('content')
     <div class="card  col-lg-5">
-        <div class="card-body">
+        <div class="card-body card-white">
             <form action="{{ route('produk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
 
                 @csrf
                 @method('PUT')
                 <div>
-                    <h5>Edit Produk</h5>
+                    <h5 class="fw-semibold">Edit Produk</h5>
                 </div>
                 <hr>
                 <div class="mt-3">
@@ -48,7 +48,7 @@
                         @endif
                         <div class="mt-3">
                             <div class="mb-3">
-                                <label class="form-label">Foto Produk</label>
+                                <label class="form-label">Foto Produk 1:1</label>
                                 <input type="file" class="form-control @error('image') is-invalid @enderror"
                                     name="image">
                                 @if ($errors->has('image'))

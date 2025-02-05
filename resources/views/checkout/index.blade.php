@@ -2,7 +2,7 @@
 @section('title', 'Checkout')
 @section('content')
 <div class="container">  
-    <div class="card col-lg-5 col-12 mx-auto"> 
+    <div class="card card-white col-lg-5 col-12 mx-auto"> 
         <div class="card-title text-center mt-4">
             <h4>Checkout</h4>
         </div>
