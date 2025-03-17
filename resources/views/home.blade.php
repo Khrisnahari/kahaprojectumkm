@@ -133,7 +133,16 @@
       <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
-            <img src="images/logo-damart-landscape.png" class="logo" alt="Logo" style="height: 80px">
+            <div class="div">
+              <div class="row">
+                <div class="col-5">
+                  <img src="images/watermarkdesa.png" class="logo" alt="Logo" style="height: 105px">
+                </div>
+                <div class="col-6">
+                  <img src="images/logo-damart-landscape.png" class="logo" alt="Logo" style="height: 80px">
+                </div>
+              </div>
+            </div>
         </a>
           <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
             <svg class="navbar-icon">
@@ -235,9 +244,9 @@
       <div class="swiper main-swiper">
         <div class="swiper-wrapper">
           <!-- Slide 1 -->
-          <div class="swiper-slide" style="background: url('images/banner-new.jpg') center/cover no-repeat; height: 100vh; position: relative;"></div>
+          <div class="swiper-slide" style="background: url('images/bg-banner-fix.png') center/cover no-repeat; height: 100vh; position: relative;"></div>
           <!-- Slide 2 -->
-          <div class="swiper-slide" style="background: url('images/banner-image.png') center/cover no-repeat; height: 100vh; position: relative;"></div>
+          <div class="swiper-slide" style="background: url('images/bg-banner-fix.png') center/cover no-repeat; height: 100vh; position: relative;"></div>
         </div>
       </div>
 

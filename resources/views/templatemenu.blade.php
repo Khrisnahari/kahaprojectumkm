@@ -163,7 +163,16 @@
         <nav id="header-nav" class="navbar navbar-expand-lg px-3 mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="{{ asset('images/logo-damart-landscape.png') }}" class="logo" alt="Logo" style="width:200px; height:80px">
+                  <div>
+                    <div class="row gap-2">
+                      <div class="col-5">
+                        <img src="{{ asset('images/watermarkdesa.png') }}" class="logo" alt="Logo" style="width:200px; height:105px">
+                      </div>
+                      <div class="col-6">
+                        <img src="{{ asset('images/logo-damart-landscape.png') }}" class="logo" alt="Logo" style="width:200px; height:80px">
+                      </div>
+                    </div>
+                  </div>
                 </a>
                 <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas"
                     data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false"

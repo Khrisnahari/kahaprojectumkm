@@ -67,13 +67,14 @@ class AuthController extends Controller
             'namalengkap'     => 'required',
             'email'   => 'required|email',
             'username'     => 'required|min:5',
-            'no_telp'     => 'required',
+            'no_telp'     => 'required|numeric',
             'password'   => 'required|min:5',
         ], [
             'namalengkap.required'        => 'Nama Lengkap tidak boleh kosong',
             'email.required'    => 'Email tidak boleh kosong',
             'username.required'       => 'Username tidak boleh kosong',
-            'telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'no_telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'no_telp.numeric'  => 'Nomor Telepon harus berupa angka',
             'password.required' => 'Password tidak boleh kosong',
         ]);
 
@@ -97,14 +98,15 @@ class AuthController extends Controller
             'namalengkap'     => 'required',
             'email'   => 'required|email',
             'username'     => 'required|min:5',
-            'no_telp'     => 'required',
+            'no_telp'     => 'required|numeric',
             'alamat'     => 'required',
             'password'   => 'required|min:5',
         ], [
             'namalengkap.required'        => 'Nama Lengkap tidak boleh kosong',
             'email.required'    => 'Email tidak boleh kosong',
             'username.required'       => 'Username tidak boleh kosong',
-            'telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'no_telp.required' => 'Nomor Telepon tidak boleh kosong',
+            'no_telp.numeric'  => 'Nomor Telepon harus berupa angka',
             'alamat.required' => 'Alamat tidak boleh kosong',
             'password.required' => 'Password tidak boleh kosong',
         ]);

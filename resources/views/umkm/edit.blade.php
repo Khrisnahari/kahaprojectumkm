@@ -29,6 +29,10 @@
                                     {{ old('kategori', $umkm->kategori) == 'Fashion' ? 'selected' : '' }}>Fashion</option>
                                 <option value="Makanan"
                                     {{ old('kategori', $umkm->kategori) == 'Makanan' ? 'selected' : '' }}>Makanan</option>
+                                <option value="Material Bangunan"
+                                    {{ old('kategori', $umkm->kategori) == 'Material Bangunan' ? 'selected' : '' }}>Material Bangun</option>
+                                <option value="Skincare"
+                                    {{ old('kategori', $umkm->kategori) == 'Skincare' ? 'selected' : '' }}>Skincare</option>
                             </select>
                         </div>
                     </div>
